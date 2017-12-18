@@ -1,0 +1,48 @@
+
+  <body>
+  <%= render 'layouts/header'%>
+    <div id='container'>
+      <div id='content'>
+        <p class="notice"><%= flash[:notice] %></p>
+           <%= yield %>
+      </div>
+<div id='first-column-outer'>
+      <div id='first-column'>
+        <div class="loginbox" style="height:200px;">
+          
+          <h2>Sign in Information</h2>
+          
+          <% if user_signed_in? %>
+          
+          <div>You are signed in as..
+          
+          <br>
+          
+          <%= current_user.email %>
+          <br>
+          <br>
+          <%= link_to 'Edit Profile', edit_user_registration_path %>
+          <br>
+          <br>
+          (<%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>) </div>
+          <br>
+          <% else %>
+          
+          <%= link_to 'Become Member', new_user_registration_path %> or <%= link_to 'Sign In', new_user_session_path %>
+          
+          <% end %>
+          
+          <h2 class="BoxHeaders"></h2>
+        </div>
+      
+      <div class="searchbox">
+        <h2 class="BoxHeaders">
+          <%= link_to 'New Category', new_category_path %>
+        </h2>
+        <h2><%= link_to "View Cart", cart_path  %></h2>
+      </div>
+      </div>
+    </div>
+</div>    
+  <%=render 'layouts/footer'%>  
+  </body>

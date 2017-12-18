@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%="Welcome to eJournal" %>
+<br />
+ <%= " ADD DIFFERENT PERMISSIONS FOR EACH USER. " %>
+ <br />
+<%# use render this is acopy paste%>
+<br/>
+   <%= render 'layouts/header' %> 
+ <br />
+ <%# e.g .Count to 10 %>
+    <%= "Let's count to 10" %>
+<br />
+<%11.times do |i|  %>
+<% i %>
+<% end %>
+
+<% if(params.has_key?(:id) &&
+  			params.has_key?(:random)) %><br />
+  			<%= "ID : #{params[:id]}" %><br />
+  			<%= "RANDOM : #{params[:random]}" %><br />
+			<% end %>
+
+<br />
+
+<%= link_to("I am a parent", {:controller => 'users', :action => 'parent'}) %>
+
+<br />
+<%= link_to("I am a principal/administrator", {:controller => 'users', :action => 'principal'}) %>
+
+<br />
+<%= link_to("I am a teacher", {:controller => 'users', :action => 'teacher'}) %>
+
+<br />
+<%= link_to("I am a student", {:controller => 'users', :action => 'student'}) %>
+
+<br />
+<%= link_to("Post", {:controller => 'posts', :action => 'index'}) %>
+<%= yield %>
+
+</body>
+</html>

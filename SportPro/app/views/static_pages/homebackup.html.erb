@@ -1,0 +1,80 @@
+
+<!--Home View-->
+
+<!--best seller-->
+<%= link_to image_tag("best_seller.png",id:"best_seller"),items_path%>
+
+<!-- editted--><!--equipment images+links to porducts-->
+<%= link_to image_tag("Equipment/sport_equipment21.jpg", class:"image_equipment",id:"image_equipment21"),items_path %>
+<%= link_to image_tag("Equipment/sport_equipment5.jpg" , class:"image_equipment",id:"image_equipment5"),items_path %>
+<%= link_to image_tag("Equipment/sport_equipment18.jpg", class:"image_equipment",id:"image_equipment18"),items_path %>
+<%= link_to image_tag("Equipment/sport_equipment19.jpg", class:"image_equipment",id:"image_equipment19"),items_path %>
+<%= link_to image_tag("Equipment/sport_equipment20.jpg", class:"image_equipment",id:"image_equipment20"),items_path %>
+<%= link_to image_tag("Equipment/sport_equipment22.png", class:"image_equipment",id:"image_equipment22"),items_path %>
+
+<div class="myHome">
+  <% provide(:title, "Home") %>
+    <%= link_to image_tag("Equipment/sport_equipment23.png", class:"image_equipment3",id:"image_equipment23") %>
+    <h1>Home</h1>
+      <p>
+        <h2>
+          Welcome to the Home of expert sports equipment. 
+          <br>
+          We are the only online store
+          that supplies just the equipment that was chosen by experts to be the best current
+          equipment on the market.
+          <br>
+          <a href="https://rails-tutorials-vadimmalakhovski.c9users.io/">SportPro</a>
+          We are here to choose the best for you so you don't have to...
+        </h2>
+        
+      <!--Logos -->
+      <%= link_to image_tag("Logos/spartan_logo",class:"logos",id:"lift_logo"),items_path %>
+      <%= link_to image_tag("Logos/nike_logo", class:"logos",id:"nike_logo"),items_path %>
+      <%= link_to image_tag("Logos/shark_logo", class:"logos",id:"lift_logo"),items_path %>
+      <%= link_to image_tag("Logos/SportPro_logo.jpg",class:"logos",id:"SportPro_logo"),items_path %>
+      <%= link_to image_tag("Logos/rbk_logo", class:"logos",id:"lift_logo"),items_path %>
+      <%= link_to image_tag("Logos/rival_logo", class:"logos",id:"lift_logo"),items_path %>
+    </p>
+</div>
+
+<!-- our gyms-->
+<%= link_to image_tag("Equipment/sport_equipment10.jpg", class:"image_equipment2",id:"image_equipment10") %>
+<%= link_to image_tag("Equipment/sport_equipment11.jpg", class:"image_equipment2",id:"image_equipment11") %>
+<%= link_to image_tag("Equipment/sport_equipment12.jpg", class:"image_equipment2",id:"image_equipment12") %>
+
+<div class="myHome", id="more_info">
+  <% provide(:title, "More Information") %>
+  
+  <h1>More Information</h1>
+    <p>
+        <h2>
+        We were inspired to open this store because of one realisation - too many options on the market. As a customer you want the most reliable, safe and estetically beautiful
+        item that does not exeed it's price. Here we are offering just that. Our team of experts have chosen the best equipment that one can find on the market.
+        <br>
+        We supply the gym equipment world-widly for home use and gyms. The shipment is free for most of the europenean countries. Companies who buys sets of items get a 10% discount
+        on all of our items.
+        </h2>
+    </p>
+     <br>
+     <br>
+  <h1>Our top products are always displayd on the home page</h1>
+</div>
+
+<!-- more items-->
+<%= link_to image_tag("Equipment/sport_equipment3.jpg", class:"image_equipment",id:"image_equipment3"),items_path %>
+<%= link_to image_tag("Equipment/sport_equipment16.jpg",class:"image_equipment",id:"image_equipment16"),items_path %>
+<%= link_to image_tag("Equipment/sport_equipment17.jpg",class:"image_equipment",id:"image_equipment17"),items_path %>
+<%= link_to image_tag("Equipment/sport_equipment1.jpg", class:"image_equipment",id:"image_equipment1"),items_path %>
+<%= link_to image_tag("Equipment/sport_equipment2.jpg", class:"image_equipment",id:"image_equipment2"),items_path %>
+<%= link_to image_tag("Equipment/sport_equipment15.jpg",class:"image_equipment",id:"image_equipment15"),items_path %>
+<%= link_to image_tag("Equipment/sport_equipment4.jpg", class:"image_equipment",id:"image_equipment4"),items_path %>
+<%= link_to image_tag("Equipment/sport_equipment6.jpg", class:"image_equipment",id:"image_equipment6"),items_path %>
+<%= link_to image_tag("Equipment/sport_equipment7.jpg", class:"image_equipment",id:"image_equipment7"),items_path %>
+<%= link_to image_tag("Equipment/sport_equipment8.jpg", class:"image_equipment",id:"image_equipment8"),items_path %>
+<%= link_to image_tag("Equipment/sport_equipment9.jpg", class:"image_equipment",id:"image_equipment9"),items_path %>
+<%= link_to image_tag("Equipment/sport_equipment14.png",class:"image_equipment",id:"image_equipment14"),items_path %>
+
+
+<%= render 'layouts/categories' %>
+

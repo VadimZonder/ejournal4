@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+<!--adding Favicon to the tab-->    
+<%= favicon_link_tag 'Logos/SportPro16px.ico' %>
+<!--adding Nameto the tab-->
+    <title><%= yield(:title) %>SportPro</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+ <body>
+
+ <%= render 'layouts/header'%>
+    <div id='container'>
+      <div id='content'>
+        <p class="notice"><%= flash[:notice] %></p>
+           <%= yield %>
+      </div>
+<div id='first-column-outer'>
+      <div id='first-column'>
+        <div class="loginbox" style="height:200px;">
+          
+          <h2>Sign in Information</h2>
+          
+          <% if user_signed_in? %>
+          
+          <div>You are signed in as..
+          
+          <br>
+          
+          <%= current_user.email %>
+          <br>
+          <br>
+          <%= button_to 'Edit Profile', edit_user_registration_path, :method => "get" %>
+      
+          <%= button_to'Sign out', destroy_user_session_path, :method => :delete %> </div>
+          <br>
+          <% else %>
+          
+          <%= button_to 'Become Member', new_user_registration_path %> or <%= link_to 'Sign In', new_user_session_path %>
+          
+          <% end %>
+          
+          <h2 class="BoxHeaders"></h2>
+        </div>
+      
+      <div class="searchbox">
+        <h2 class="BoxHeaders">
+          <%=  button_to  'New Category', new_category_path, :method => "get" %>
+        </h2>
+        <h2><%=button_to "View Cart", cart_path, :method => "get"  %></h2>
+        <h2><%= button_to "View Orders", orders_path, :method => "get" %></h2>
+        
+               
+        <%=render 'layouts/search' %>
+      </div>
+      </div>
+    </div>
+</div>    
+  <%=render 'layouts/footer'%>  
+    
+
+  </body>
+</html>

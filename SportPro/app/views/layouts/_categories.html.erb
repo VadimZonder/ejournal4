@@ -1,0 +1,64 @@
+
+<h1>Categories</h1>
+
+<br>
+
+<table class="catalog">
+    <!-- 3 in a row-->
+     <% if @categories.length % 3 ==0 %>
+    <% @categories.each_slice(3) do  |category_a, category_b, category_c| %>
+    <!--BUG if the total number is not divisible by 3 it will result in error-->
+    <tr>
+        <td>
+            <div class="category">
+                <p><a href="/category/<%= category_a.title %>"><%= category_a.title %></a></p>
+                <p><%= image_tag category_a.image, :style=>"height:100px" %></p>
+                <p><%= category_a.description %></p>
+            </div>
+            
+        </td>
+        
+         <td>
+            <div class="category">
+                <p><a href="/category/<%= category_b.title %>"><%= category_b.title %></a></p>
+                <p><%= image_tag category_b.image, :style=>"height:100px" %></p>
+                <p><%= category_b.description %></p>
+            </div>
+        </td>
+        
+        
+            <td>
+            <div class="category">
+                <p><a href="/category/<%= category_c.title %>"><%= category_c.title %></a></p>
+                <p><%= image_tag category_c.image, :style=>"height:100px" %></p>
+                <p><%= category_c.description %></p>
+            </div>
+        </td>
+    </tr>
+    
+         
+
+  <% end %>    
+  
+<!-- 1 in a row--> 
+<% else %>
+ <% @categories.each do |category| %>
+    
+    <tr>
+        <td>
+            <div class="category">
+                <p><a href="/category/<%= category.title %>"><%= category.title %></a></p>
+                <p><%= image_tag category.image, :style=>"height:100px" %></p>
+                <p><%= category.description %></p>
+                
+                
+            </div>
+            
+        </td>
+        
+        
+    </tr>
+    
+    <% end %>
+  <% end %>
+</table>
