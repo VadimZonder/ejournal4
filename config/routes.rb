@@ -1,5 +1,23 @@
 Rails.application.routes.draw do
-  resources :posts
+  #in order to uses devises methods like if_signedin? and view the resourse
+  #of what you are looking for need this for each resourcce like view students marks in db
+  devise_for :users do 
+    resources:students
+  end 
+  
+
+  
+  resources :students
+  resources :students
+  resources :students
+  resources :students
+  resources :items
+  resources :items
+  resources :items
+  resources :items
+  resources :items
+  resources :items
+  
   get 'sessions/new'
 
   get 'sessions/create'
@@ -35,8 +53,10 @@ Rails.application.routes.draw do
   get 'page/index'
     # You can have the root of your site routed with "root"
   #ROOT PAGE IS THE STATI_COTROLLER'S INDEX METHOD WHICH WILL BE RENDERED IN VIEWS
-   root 'static_pages#index'
+  # root 'static_pages#index'
  
+ #need this for device to work
+ root :to => 'static_pages#index'
   
   #devise_for :users, path: 'users'
 # eg. http://localhost:3000/users/sign_in
@@ -73,7 +93,11 @@ get '/teacher' => 'users#teacher'
    get '/parents/loggedin' => 'parents#loggedin'
     get '/parents/loggedout' => 'parents#loggedout'
 		
-
+#whenever /teacher/login is requested in URI (that means views/teacher/login.html.erb 
+#then it triggers teacher_controller that triggers login method
+  get '/teachers/login' => 'teachers#login'
+   get '/teachers/loggedin' => 'teachers#loggedin'
+    get '/teachers/loggedout' => 'teachers#loggedout'
 
 #TRYING TO HAVE ONE VIEW OF USERS
 #get "/student", to: "users#users", as: "student"		

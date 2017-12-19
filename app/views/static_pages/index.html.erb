@@ -15,18 +15,9 @@
 <br/>
    <%= render 'layouts/header' %> 
  <br />
- <%# e.g .Count to 10 %>
-    <%= "Let's count to 10" %>
-<br />
-<%11.times do |i|  %>
-<% i %>
-<% end %>
 
-<% if(params.has_key?(:id) &&
-  			params.has_key?(:random)) %><br />
-  			<%= "ID : #{params[:id]}" %><br />
-  			<%= "RANDOM : #{params[:random]}" %><br />
-			<% end %>
+<br />
+
 
 <br />
 
@@ -43,6 +34,8 @@
 
 <br />
 <%= link_to("Post", {:controller => 'posts', :action => 'index'}) %>
+
+
 <%= yield %>
 
 </body>

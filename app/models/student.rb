@@ -1,10 +1,8 @@
-class User < ActiveRecord::Base
-def user_params
-    
-  params.require(:user).permit(:email, :password, :password_confirmation, :remember_me)  
-    
-end
-         has_many:orders
+class Student < ActiveRecord::Base
+      # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
          
          
   has_secure_password
@@ -23,6 +21,4 @@ end
   def to_s
     "#{first_name} #{last_name}"
   end
-  
-  
 end

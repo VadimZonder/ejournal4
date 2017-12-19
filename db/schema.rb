@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171215130148) do
+ActiveRecord::Schema.define(version: 20171219132535) do
+
+  create_table "loosers", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "loosers", ["email"], name: "index_loosers_on_email", unique: true
+  add_index "loosers", ["reset_password_token"], name: "index_loosers_on_reset_password_token", unique: true
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"
@@ -22,6 +40,17 @@ ActiveRecord::Schema.define(version: 20171215130148) do
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "students", force: :cascade do |t|
+    t.string   "name"
+    t.string   "surname"
+    t.integer  "Day_of_Birth"
+    t.integer  "Month_of_Birth"
+    t.integer  "Year_of_Birthd"
+    t.string   "schools_name"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"

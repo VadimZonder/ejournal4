@@ -13,13 +13,14 @@
   <strong>have here a link to info for prents Welcome</strong>
   <%= link_to "Logout", logout_path, method: :delete %>
   
-  <%= link_to("SEE Your Student", {:controller => 'parents', :action => 'loggedin'}) %>
+  <%= link_to("SEE Your Child", {:controller => 'students', :action => 'index'}) %>
 <% else %>
   <strong>Welcome Guest!</strong>
   <%= link_to "Login", login_path %> or
   <%= link_to "Register", signup_path %>
-    <%=link_to "You need to register/login in order to SEE Your Student", login_path %>
+    <%=link_to "You need to register/login in order to SEE Your Child", login_path %>
 <% end %>
+ <br />
  <br />
 <%# use render this is acopy paste%>
 <br/>

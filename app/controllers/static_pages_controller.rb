@@ -1,11 +1,7 @@
 class StaticPagesController < ActionController::Base
-  
+
   #if index is requeste from the browser and it is routed in routs it will run index in views
   def index
-      if(params.has_key?(:id) && params.has_key?(:random))
-      				@id = params['id']
-      				@random = params[:random]
-      end 				
   end
   
 #(if from browser /sample is called)
