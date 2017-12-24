@@ -15,7 +15,7 @@ class StudentsController < ApplicationController
  
    #extra security the password for teacher will have a password + the date = each day different
    @date = Time.now.strftime("%e")
-  #http_basic_authenticate_with :name => "@user", :password => @date + "1234"
+  http_basic_authenticate_with :name => "@user", :password => @date + "1234"
 
 
 def search
@@ -23,7 +23,7 @@ def search
  #@the search term is what will be presented in q
   st ="%#{params[:q]}%"
   #seatchterm will be used to search in students table searchin for the first name here
-  @students = Student.where("name like ?", st)
+  @students = Student.where("name like (?) or surname like (?) or school like (?)", st, st, st)
 end
 
 

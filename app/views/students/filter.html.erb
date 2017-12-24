@@ -1,4 +1,12 @@
-<h1>Filter</h1>
+<h1>Categories Filter</h1>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Categories Filter</title>
+	<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
+</head>
+
+<body>
 
 
 <% if @students.length == 0 %>
@@ -12,25 +20,46 @@
   </div>
 <% end %>
 
-<br>
-<table class="filter">
-  <% @students.each do |student| %>
-      <tr>
-        
-          <div class="filter">
-            <%= link_to student.name %> <%=student.surname %> <%=student.school %> <%=student.comment %>
-          </div>
-         
-          <div class="links">
-            <% if user_signed_in? %>
+<div class="table-title">
+<h3>Students Table</h3>
+</div>
+<table class="table-fill">
+ 
+<thead>
+<tr>
+     <%= link_to 'New Student', new_student_path %>
+<th class="text-left">Name</th>
+<th class="text-left">Date of Birth</th>
+<th class="text-left">School</th>
+<th class="text-left">Comment</th>
+<th class="text-left">Edit/Destroy/Add</th>
+</tr>
+</thead>
+<tbody class="table-hover">
+    <% @students.each do |student| %>
+<tr>                                      
+<td class="text-left"><%= link_to "#{student.name} ", student %><%= student.surname  %></td>
+<td class="text-left"><%= "#{student.day_of_birth} /" %>  
+            <%= "#{student.month_of_birth} /"%>
+            <%= student.year_of_birth %></td>
+<td class="text-left"> <%= student.school %></td>
+<td class="text-left"> <%= student.comment %></td>
+<td class="text-left"> <% if user_signed_in? %>
               <%= link_to 'Edit', edit_student_path(student) %>
-              <%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <%else%>
+              <%= link_to 'Delete', student, method: :delete, data: { confirm: 'Are you sure?' } %>
+               <%else%>
+            <%end%> </td>
             
-            
-            <%end%>  
-        </div>
-        </td>
-      </tr>
-    <% end %>
+           
+</tr>
+<tr>
+
+</tr>
+
+</tbody>
+
+ <% end %>
 </table>
+  
+
+  </body>
