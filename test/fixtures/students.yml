@@ -3,15 +3,17 @@
 one:
   name: MyString
   surname: MyString
-  Day_of_Birth: 1
-  Month_of_Birth: 1
-  Year_of_Birthd: 1
-  schools_name: MyString
+  day_of_birth: 1
+  month_of_birth: 1
+  year_of_birth: 1
+  school: MyString
+  comment: MyString
 
 two:
   name: MyString
   surname: MyString
-  Day_of_Birth: 1
-  Month_of_Birth: 1
-  Year_of_Birthd: 1
-  schools_name: MyString
+  day_of_birth: 1
+  month_of_birth: 1
+  year_of_birth: 1
+  school: MyString
+  comment: MyString

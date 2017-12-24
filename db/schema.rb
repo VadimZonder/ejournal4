@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171219132535) do
+ActiveRecord::Schema.define(version: 20171223150325) do
+
+  create_table "filters", force: :cascade do |t|
+    t.string   "filter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "loosers", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -44,10 +50,11 @@ ActiveRecord::Schema.define(version: 20171219132535) do
   create_table "students", force: :cascade do |t|
     t.string   "name"
     t.string   "surname"
-    t.integer  "Day_of_Birth"
-    t.integer  "Month_of_Birth"
-    t.integer  "Year_of_Birthd"
-    t.string   "schools_name"
+    t.integer  "day_of_birth"
+    t.integer  "month_of_birth"
+    t.integer  "year_of_birth"
+    t.string   "school"
+    t.string   "comment"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

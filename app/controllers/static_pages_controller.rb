@@ -1,8 +1,18 @@
 class StaticPagesController < ActionController::Base
 
   #if index is requeste from the browser and it is routed in routs it will run index in views
+
   def index
+   @time = Time.now.strftime("%B %e, %Y at %I:%M %p")
+    def current_user
+    User.where(id: session[:user_id]).first
+    end
+
+   @user = current_user
+
   end
+  
+
   
 #(if from browser /sample is called)
 def sample

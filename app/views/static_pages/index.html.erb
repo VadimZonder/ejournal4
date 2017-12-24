@@ -12,13 +12,17 @@
  <%= " ADD DIFFERENT PERMISSIONS FOR EACH USER. " %>
  <br />
 <%# use render this is acopy paste%>
+<%= "The current date and time is:  #{@time}" %>
+<br/>
+<%= "The User is:  #{@user}" %>
 <br/>
    <%= render 'layouts/header' %> 
  <br />
 
 <br />
-
-
+<%= link_to teacher_path %>
+<br />
+<%= link_to("I am a teacher", teacher_path )%>
 <br />
 
 <%= link_to("I am a parent", {:controller => 'users', :action => 'parent'}) %>
@@ -33,7 +37,7 @@
 <%= link_to("I am a student", {:controller => 'users', :action => 'student'}) %>
 
 <br />
-<%= link_to("Post", {:controller => 'posts', :action => 'index'}) %>
+ <%= link_to("SEE Your Student DELETE ON COMPLITION", {:controller => 'students', :action => 'index'}) %>
 
 
 <%= yield %>

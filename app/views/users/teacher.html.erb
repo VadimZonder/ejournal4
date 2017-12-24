@@ -22,12 +22,15 @@
     <%=link_to "You need to register/login in order to SEE Your Student", login_path %>
 <% end %>
  <br />
+  <%= @teacher_message%>
 <%# use render this is acopy paste%>
 <br/>
    <%= render 'layouts/header' %> 
  <br />
  <%# e.g .Count to 10 %>
-    <%= "You are loged in as:  #{@user_message}" %>
+    <%= "You are loged in as a:  #{@teacher_message}" %>
+    
+  
    
 <br />
 

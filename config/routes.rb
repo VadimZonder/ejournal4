@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  
+  post '/search' => 'students#search'
+  
+  
+resources :filters
+  devise_for :users do 
+    resources:filters
+  end  
+  
+  get 'filter/:filter', to: 'students#filter'
+  
+  
+  resources :filters
+  resources :students
+  #if path/path is ran or requested => do the following
   #in order to uses devises methods like if_signedin? and view the resourse
   #of what you are looking for need this for each resourcce like view students marks in db
   devise_for :users do 
@@ -6,17 +21,11 @@ Rails.application.routes.draw do
   end 
   
 
-  
-  resources :students
-  resources :students
-  resources :students
-  resources :students
+#resource are all the conventional routes given by default
+#like index, edit, add etc.. run rake routes
+
   resources :items
-  resources :items
-  resources :items
-  resources :items
-  resources :items
-  resources :items
+
   
   get 'sessions/new'
 
@@ -98,6 +107,7 @@ get '/teacher' => 'users#teacher'
   get '/teachers/login' => 'teachers#login'
    get '/teachers/loggedin' => 'teachers#loggedin'
     get '/teachers/loggedout' => 'teachers#loggedout'
+
 
 #TRYING TO HAVE ONE VIEW OF USERS
 #get "/student", to: "users#users", as: "student"		

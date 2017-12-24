@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    
   end
 
   # GET /users/1
@@ -93,6 +94,7 @@ class UsersController < ApplicationController
     
     #(if from browser /users is called)
 def users
+  
 end
 
 
@@ -109,10 +111,12 @@ def principal
 @user_message = "I am a princila/admin"
 end
  #(when in views var will be called)
+
  
  #(if from browser /teacher is called)
 def teacher
-@user_message = "I am a teacher"
+
+@teacher_message = "I am a teacher"
 end
  #(when in views var will be called)
  

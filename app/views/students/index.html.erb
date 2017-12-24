@@ -13,6 +13,17 @@ end %>
 </head>
 
 <body>
+    
+    
+    <%= render 'layouts/search' %>
+    
+    
+  <%= link_to 'Create New Filter', new_filter_path %>
+
+  
+  <br/>
+  <%=render 'layouts/filters'%>
+  
 <div class="table-title">
 <h3>Students Table</h3>
 </div>
@@ -20,9 +31,11 @@ end %>
  
 <thead>
 <tr>
+     <%= link_to 'New Student', new_student_path %>
 <th class="text-left">Name</th>
 <th class="text-left">Date of Birth</th>
 <th class="text-left">School</th>
+<th class="text-left">Comment</th>
 <th class="text-left">Edit/Destroy/Add</th>
 </tr>
 </thead>
@@ -30,32 +43,29 @@ end %>
     <% @students.each do |student| %>
 <tr>
 <td class="text-left"><%= link_to "#{student.name} ", student %><%= student.surname  %></td>
-<td class="text-left"><%= "#{student.Day_of_Birth} /" %>  
-            <%= "#{student.Month_of_Birth} /"%>
-            <%= student.Year_of_Birthd %></td>
-<td class="text-left"> <%= student.schools_name %></td>
-
+<td class="text-left"><%= "#{student.day_of_birth} /" %>  
+            <%= "#{student.month_of_birth} /"%>
+            <%= student.year_of_birth %></td>
+<td class="text-left"> <%= student.school %></td>
+<td class="text-left"> <%= student.comment %></td>
 <td class="text-left"> <% if user_signed_in? %>
               <%= link_to 'Edit', edit_student_path(student) %>
               <%= link_to 'Delete', student, method: :delete, data: { confirm: 'Are you sure?' } %>
-              <%= link_to 'New Student', new_student_path %>
                <%else%>
             <%end%> </td>
             
-
+           
 </tr>
 <tr>
 
 </tr>
+
 </tbody>
+
  <% end %>
 </table>
   
 
   </body>
-
-
-
-
 
 
