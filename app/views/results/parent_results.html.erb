@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Results for Teachers</h1>
+<h1>Listing Results for Parents</h1>
 
 <table>
   <thead>
@@ -22,7 +21,7 @@
         <td><%= result.classes %></td>
         <td><%= result.teacher %></td>
         <td><%= result.grade %></td>
-        <td><%= result.email %><%= link_to("Results", {:controller => 'results', :action => 'index', :id =>  result.email}) %>
+        <td><%= result.email %><%= link_to("Results", {:controller => 'result', :action => 'parent_result', :id =>  result.email}) %>
 </td>
         <td><%= result.comment %></td>
         <td><%= link_to 'Show', result %></td>

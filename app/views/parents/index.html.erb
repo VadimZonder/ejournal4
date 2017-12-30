@@ -14,15 +14,6 @@ end %>
 
 <body>
     
-    
-    <%= render 'parents/search' %>
-    
-    
-  <%= link_to 'Create New  Parental Filter', new_parent_filter_path %>
-
-  
-  <br/>
-  <%=render 'parents/parent_filters'%>
   
 <div class="table-title">
 <h3>Students Table</h3>
@@ -43,12 +34,12 @@ end %>
 <tbody class="table-hover">
     <% @students.each do |student| %>
 <tr>
-<td class="text-left"><%= link_to "#{student.name} ", student %><%= student.surname  %><%= link_to 'New Result', new_result_path %></td>
+<td class="text-left"><%= link_to "#{student.name} ", student %><%= student.surname  %></td>
 <td class="text-left"><%= "#{student.day_of_birth} /" %>  
             <%= "#{student.month_of_birth} /"%>
             <%= student.year_of_birth %></td>
 <td class="text-left"> <%= student.school %></td>
-<td class="text-left"> <%= student.email %><%= link_to("Results", {:controller => 'parents', :action => 'parent_filter', :id => student.email}) %></td>
+<td class="text-left"> <%= student.email %><%= link_to("Results par_res", {:controller => 'result',  :action => 'parent_result', :id =>  student.email }) %></td>
 <td class="text-left"> <%= student.comment %></td>
 
 </tr>
@@ -61,7 +52,15 @@ end %>
  <% end %>
 </table>
   
+   
+    <%= render 'parents/search' %>
+    
+    
+  <%= link_to 'Create New  Parental Filter', new_parent_filter_path %>
 
+  
+  <br/>
+  <%=render 'parents/parent_filters'%>
   </body>
 
 

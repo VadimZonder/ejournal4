@@ -1,5 +1,5 @@
 class ResultsController < ApplicationController
- before_action :set_result, only: [:show, :edit, :update, :destroy]
+ before_action :set_result, only: [:show, :edit, :update, :destroy], except: [:parent_result]
 
   # GET /results
   # GET /results.json
@@ -30,6 +30,26 @@ class ResultsController < ApplicationController
     
   end
 
+def parent_result
+   
+    #get the current URI once on this page
+    @URI = request.original_url
+    #split the URI to get everything after the = sign
+    @URI = @URI.split('=').last
+    #take the % sign out of the string
+    @URI = @URI.tr('%', '')
+    #get everything befor 40 and everything after 40
+    @splitEmailF =  @URI.split("40").first
+    @splitEmailL =  @URI.split("40").last
+    # to add between first and last in order to reconstruct the email
+    @at="@"  
+    @st=@splitEmailF.to_s+@at.to_s+@splitEmailL.to_s
+    #saving the reconstructed email into a variable
+    st=@splitEmailF.to_s+@at.to_s+@splitEmailL.to_s
+    #searching the DB to match all the results of a student with the unique email
+    @results= Result.where("email like ? ",st)   
+    
+end
 
   # GET /results/1
   # GET /results/1.json

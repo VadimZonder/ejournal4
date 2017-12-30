@@ -1,7 +1,27 @@
 class ParentsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
    before_action :set_student, only: [:show]
-   
+   before_action :set_result, only: [:show, :edit, :update, :destroy]
+
+def parent_result
+    @results= Result.all
+    #get the current URI once on this page
+    @URI = request.original_url
+    #split the URI to get everything after the = sign
+    @URI = @URI.split('=').last
+    #take the % sign out of the string
+    @URI = @URI.tr('%', '')
+    #get everything befor 40 and everything after 40
+    @splitEmailF =  @URI.split("40").first
+    @splitEmailL =  @URI.split("40").last
+    # to add between first and last in order to reconstruct the email
+    @at="@"  
+    @st=@splitEmailF.to_s+@at.to_s+@splitEmailL.to_s
+    #saving the reconstructed email into a variable
+    st=@splitEmailF.to_s+@at.to_s+@splitEmailL.to_s
+    #searching the DB to match all the results of a student with the unique email
+    @results= Result.where("email like ? ",st)    
+end
    def parent_search
   @search_term = params[:q]
  #@the search term is what will be presented in q
@@ -83,6 +103,16 @@ end
       params.require(:student).permit(:name, :surname, :day_of_birth, :month_of_birth, :year_of_birth, :school, :email, :comment)
     end
 
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_result
+      @result = Result.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def result_params
+      params.require(:result).permit(:date_time, :classes, :teacher, :grade, :email, :comment)
+    end
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.

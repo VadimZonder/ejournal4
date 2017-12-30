@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+post '/results' => 'result#parent_result'
+resources :parent_results
 
-  
 post '/search' => 'students#search'
 #if going to /parent_search then controller action parents method parent_search
 post '/parent_search' => 'parents#parent_search'
