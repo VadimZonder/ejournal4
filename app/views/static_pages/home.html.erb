@@ -20,26 +20,28 @@
  <br />
 
 <br />
-<%= link_to teacher_path %>
-<br />
-<%= link_to("I am a teacher", teacher_path )%>
-<br />
+<br>
 
+
+<br />
+<br>
 <%= link_to("I am a parent", {:controller => 'users', :action => 'parent'}) %>
-
+<br>
 <br />
 <%= link_to("I am a principal/administrator", {:controller => 'users', :action => 'principal'}) %>
-
+<br>
 <br />
-<%= link_to("I am a teacher", {:controller => 'users', :action => 'teacher'}) %>
 
+<%= link_to("I am a teacher", teacher_path )%>
+<br>
 <br />
 <%= link_to("I am a student", {:controller => 'users', :action => 'student'}) %>
-
+<br>
 <br />
  <%= link_to("SEE Your Student DELETE ON COMPLITION", {:controller => 'students', :action => 'index'}) %>
-
-
+<br>
+<br/>
+ <%= link_to 'New Result', new_result_path %>
 <%= yield %>
 
 </body>

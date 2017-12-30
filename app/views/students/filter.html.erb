@@ -31,6 +31,7 @@
 <th class="text-left">Name</th>
 <th class="text-left">Date of Birth</th>
 <th class="text-left">School</th>
+<th class="text-left">Email</th>
 <th class="text-left">Comment</th>
 <th class="text-left">Edit/Destroy/Add</th>
 </tr>
@@ -43,6 +44,8 @@
             <%= "#{student.month_of_birth} /"%>
             <%= student.year_of_birth %></td>
 <td class="text-left"> <%= student.school %></td>
+<td class="text-left"> <%= student.email %><%= link_to("Results", {:controller => 'results', :action => 'index', :id =>  student.email}) %>
+</td>
 <td class="text-left"> <%= student.comment %></td>
 <td class="text-left"> <% if user_signed_in? %>
               <%= link_to 'Edit', edit_student_path(student) %>

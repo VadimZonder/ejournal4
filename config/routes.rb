@@ -1,30 +1,48 @@
 Rails.application.routes.draw do
+
   
-  post '/search' => 'students#search'
-  
-  
+post '/search' => 'students#search'
+#if going to /parent_search then controller action parents method parent_search
+post '/parent_search' => 'parents#parent_search'
+ 
 resources :filters
-  devise_for :users do 
+resources :parent_filters
+get 'parent_filter/:filter', to: 'parents#parent_filter'
+get 'filter/:filter', to: 'students#filter'
+
+devise_for :users do 
+  resources:parent_filters
+end 
+devise_for :users do 
     resources:filters
-  end  
-  
-  get 'filter/:filter', to: 'students#filter'
-  
-  
-  resources :filters
-  resources :students
+end  
+#_______________________________________________  
+devise_for :students do 
+  resources :results 
+end 
+devise_for :users do 
+    resources:students
+end  
+
+resources :items
+resources :results
+resources :students
+resources :students do 
+  resources :results 
+end 
+
+
   #if path/path is ran or requested => do the following
   #in order to uses devises methods like if_signedin? and view the resourse
   #of what you are looking for need this for each resourcce like view students marks in db
-  devise_for :users do 
-    resources:students
-  end 
+ 
   
+
 
 #resource are all the conventional routes given by default
 #like index, edit, add etc.. run rake routes
 
-  resources :items
+  
 
   
   get 'sessions/new'
@@ -33,8 +51,7 @@ resources :filters
 
   get 'sessions/destroy'
 
-  resources :users
-  resources :users
+
   resources :users
   get 'sessions/new'
 
@@ -65,7 +82,7 @@ resources :filters
   # root 'static_pages#index'
  
  #need this for device to work
- root :to => 'static_pages#index'
+ root :to => 'static_pages#home'
   
   #devise_for :users, path: 'users'
 # eg. http://localhost:3000/users/sign_in

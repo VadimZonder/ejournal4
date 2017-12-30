@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-
+  
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   
   
@@ -15,7 +15,8 @@ class StudentsController < ApplicationController
  
    #extra security the password for teacher will have a password + the date = each day different
    @date = Time.now.strftime("%e")
-  http_basic_authenticate_with :name => "@user", :password => @date + "1234"
+   ###uncomment at the end
+  #http_basic_authenticate_with :name => "@user", :password => @date + "12345"
 
 
 def search
@@ -42,6 +43,8 @@ end
   def index
     @students = Student.all
     @filters = Filter.all
+    #name = "Vadim"
+    #@students= Student.where("name like ? ", name)
     #add this gem later
     #@items = Item.paginate(:page => params[:page], :per_page => 2)
   end
@@ -49,10 +52,11 @@ end
   # GET /students/1
   # GET /students/1.json
   def show
+    #getting an id of a student
+      
   end
 
   # GET /students/new
-  #renders a page at students/new
   def new
     @student = Student.new
   end
@@ -63,8 +67,6 @@ end
 
   # POST /students
   # POST /students.json
-  #a POST form to create a student
-  #then to have a form add student view new.html.erb and make a form with vars that you need
   def create
     @student = Student.new(student_params)
 
@@ -111,8 +113,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:name, :surname, :day_of_birth, :month_of_birth, :year_of_birth, :school, :comment)
+      params.require(:student).permit(:name, :surname, :day_of_birth, :month_of_birth, :year_of_birth, :school, :email, :comment)
     end
-
-
 end

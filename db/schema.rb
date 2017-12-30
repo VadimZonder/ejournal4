@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171223150325) do
+ActiveRecord::Schema.define(version: 20171229141303) do
 
   create_table "filters", force: :cascade do |t|
     t.string   "filter"
@@ -37,6 +37,12 @@ ActiveRecord::Schema.define(version: 20171223150325) do
   add_index "loosers", ["email"], name: "index_loosers_on_email", unique: true
   add_index "loosers", ["reset_password_token"], name: "index_loosers_on_reset_password_token", unique: true
 
+  create_table "parent_filters", force: :cascade do |t|
+    t.string   "filter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -47,6 +53,17 @@ ActiveRecord::Schema.define(version: 20171223150325) do
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
+  create_table "results", force: :cascade do |t|
+    t.datetime "date_time"
+    t.string   "classes"
+    t.string   "teacher"
+    t.string   "grade"
+    t.string   "email"
+    t.string   "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "students", force: :cascade do |t|
     t.string   "name"
     t.string   "surname"
@@ -54,6 +71,7 @@ ActiveRecord::Schema.define(version: 20171223150325) do
     t.integer  "month_of_birth"
     t.integer  "year_of_birth"
     t.string   "school"
+    t.string   "email"
     t.string   "comment"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
