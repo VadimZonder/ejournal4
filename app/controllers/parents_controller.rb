@@ -1,7 +1,23 @@
 class ParentsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
    before_action :set_student, only: [:show]
-   before_action :set_result, only: [:show, :edit, :update, :destroy]
+   before_action :set_result, only: [:show, :edit, :update, :destroy], except: [:parent_filter, :index]
+
+
+def lfilter
+  #add if the current user email matches the pfilter email the show (maybe in views)
+    st = params[:lfilter]
+    #now compare that filter name with student
+    @students= Student.where("school like (?) or surname like (?) or email like (?)",st,st, st) #
+    #display all the pfilters
+    #@pfilters = Pfilter.all
+    #displaying currnet user
+    #@user = current_user.email
+    #display the pfilters with the current user
+    #@pfilters= Pfilter.where("email like ? ", @user) 
+   # @students= Student.where("school like ? ", st)
+
+end
 
 def parent_result
     @results= Result.all
@@ -53,6 +69,26 @@ end
 
 
 def parent_filter
+ #add if the current user email matches the pfilter email the show (maybe in views)
+    st = params[:pfilter]
+    #now compare that filter name with student
+    @students= Student.where("school like (?) or surname like (?) or email like (?)",st,st, st) #
+#BUG cant categorise by email from student DB (works with other params)
+    #:filter is column in the schema table filters
+    #name = params[:filter]
+    #surname = params[:filter]
+    #now compare that filter name with student
+     #@students= Student.where("name like (?)" name.
+  #where("user_id is not in (?)",[user_ids])
+    #@students= Student.where("surname like (?)",surname)
+    
+    #make it work
+    #email = "arthur@hotmail.com"
+    #@students=Student.where("email like (?)",email)
+
+end
+
+def parent_pfilter
 
 #BUG cant categorise by email from student DB (works with other params)
     #:filter is column in the schema table filters
@@ -72,8 +108,14 @@ end
 def index
  @students = Student.all
  @parent_filters = ParentFilter.all
+ #@pfilters=Pfilter.all
  
- 
+    ##Here we personalise filters so that each user will have their own unique filter
+    #displaying currnet user
+    #the @vars are now available in views
+    @user = current_user.email
+    #display the pfilters with the current user
+    @lfilters= Lfilter.where("email like ? ", @user)  
  
 end
 #(if from browser /login is called)

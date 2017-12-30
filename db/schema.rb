@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171229141303) do
+ActiveRecord::Schema.define(version: 20171230200546) do
 
   create_table "filters", force: :cascade do |t|
     t.string   "filter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lfilters", force: :cascade do |t|
+    t.string   "lfilter"
+    t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,6 +46,13 @@ ActiveRecord::Schema.define(version: 20171229141303) do
 
   create_table "parent_filters", force: :cascade do |t|
     t.string   "filter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pfilters", force: :cascade do |t|
+    t.string   "pfilter"
+    t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+    get 'lfilter/:lfilter', to: 'parents#lfilter'
+  resources :lfilters
+  get '/students/parent_filter/', to: 'students#parent_filter'
+resources :students do 
+  resources :pfilters
+end   
+  
+  #get 'parent_filter/:pfilter', to: 'student#parent_filter'
+  
+  get 'pfilter/:pfilter', to: 'students#pfilter'
+  resources :pfilters
 post '/results' => 'result#parent_result'
 resources :parent_results
 

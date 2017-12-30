@@ -1,4 +1,5 @@
 class ResultsController < ApplicationController
+ #granting and limmiting access for different methods  
  before_action :set_result, only: [:show, :edit, :update, :destroy], except: [:parent_result]
 
   # GET /results
