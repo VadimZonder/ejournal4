@@ -1,75 +1,18 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Students for Parents</h1>
-<% def index
-  @students = Students.all
-end %>
-
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
 	<title>Table Style</title>
 	<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
 </head>
-
 <body>
-  
-  
-<div class="table-title">
-<h3>Students Table</h3>
-</div>
-<table class="table-fill">
- 
-<thead>
-<tr>
-     <%= link_to 'New Student', new_student_path %>
-<th class="text-left">Name</th>
-<th class="text-left">Date of Birth</th>
-<th class="text-left">School</th>
-<th class="text-left">Email</th>
-<th class="text-left">Comment</th>
-
-</tr>
-</thead>
-<tbody class="table-hover">
-    <% @students.each do |student| %>
-<tr>
-<td class="text-left"><%= link_to "#{student.name} ", student %><%= student.surname  %></td>
-<td class="text-left"><%= "#{student.day_of_birth} /" %>  
-            <%= "#{student.month_of_birth} /"%>
-            <%= student.year_of_birth %></td>
-<td class="text-left"> <%= student.school %></td>
-<td class="text-left"> <%= student.email %><%= link_to("Results par_res", {:controller => 'result',  :action => 'parent_result', :id =>  student.email }) %></td>
-<td class="text-left"> <%= student.comment %></td>
-
-</tr>
-<tr>
-
-</tr>
-
-</tbody>
-
- <% end %>
-</table>
- 
- 
-   <%= link_to 'ADD rsonal Parent Filter', new_lfilter_path %>
-  <br/>
-  <%=render 'layouts/lfilters'%>
-  
-<br/><br/>  
-
+    <p id="notice"><%= notice %></p>
+    <h1>Listing Students for Parents (viwes/paretns/index.html.erb)</h1>
     
-  <br/><br/>  
-  <%= link_to 'Create New Filter Parent', new_lfilter_path %>
-
-  
- 
-   
-    <%= render 'parents/search' %>
-    
+    <br/><br/>  
+    <%= link_to 'Create New Filter Parent', new_lfilter_path %>
     <br/>
-  <%#render 'parents/parent_filters'%>
-  </body>
+    <%=render 'layouts/lfilters'%>
+
+</body>
 
 

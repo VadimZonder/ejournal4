@@ -24,21 +24,22 @@ def search
  #@the search term is what will be presented in q
   st ="%#{params[:q]}%"
   #seatchterm will be used to search in students table searchin for the first name here
-  @students = Student.where("name like (?) or surname like (?) or school like (?)", st, st, st)
+  @students = Student.where("email like (?) or surname like (?) or school like (?)", st, st, st)
 end
 
-
+=begin delete later = depriciatedS
 def filter
   #:filter is column in the schema table filters
     st = params[:filter]
     #now compare that filter name with student
     @students= Student.where("school like ? ", st)
-
 end
+=end
 
 def pfilter
   #add if the current user email matches the pfilter email the show (maybe in views)
-    st = params[:pfilter]
+    #st = params[:pfilter] (this does not work with emails for some reason)
+    st ="%#{params[:pfilter]}%"
     #now compare that filter name with student
     @students= Student.where("school like (?) or surname like (?) or email like (?)",st,st, st) #
     #display all the pfilters

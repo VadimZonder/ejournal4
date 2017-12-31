@@ -27,7 +27,7 @@
  
 <thead>
 <tr>
-     <%= link_to 'New Student', new_student_path %>
+<p>"filter results so that newest if first</p>
 <th class="text-left">Name</th>
 <th class="text-left">Date of Birth</th>
 <th class="text-left">School</th>
@@ -44,7 +44,7 @@
             <%= "#{student.month_of_birth} /"%>
             <%= student.year_of_birth %></td>
 <td class="text-left"> <%= student.school %></td>
-<td class="text-left"> <%= student.email %><%= link_to("Results", {:controller => 'results', :action => 'index', :id =>  student.email}) %>
+<td class="text-left"> <%= student.email %><%= link_to("Results", {:controller => 'results', :action => 'parent_result', :id =>  student.email}) %>
 </td>
 <td class="text-left"> <%= student.comment %></td>
 

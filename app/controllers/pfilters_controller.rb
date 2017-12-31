@@ -4,7 +4,12 @@ class PfiltersController < ApplicationController
   # GET /pfilters
   # GET /pfilters.json
   def index
-    @pfilters = Pfilter.all
+    #@pfilters = Pfilter.all
+    ##Here we personalise filters so that each user will have their own unique filter
+    #displaying currnet user
+    @user = current_user.email
+    #display the pfilters with the current user
+    @pfilters= Pfilter.where("email like ? ", @user) 
   end
 
   # GET /pfilters/1

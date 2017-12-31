@@ -5,10 +5,12 @@ class ParentsController < ApplicationController
 
 
 def lfilter
+    ##BUG fix the lfiter by email it is vital function
   #add if the current user email matches the pfilter email the show (maybe in views)
-    st = params[:lfilter]
+    #st = params[:lfilter] (this does not work with emails for some reason)
+    st ="%#{params[:lfilter]}%"
     #now compare that filter name with student
-    @students= Student.where("school like (?) or surname like (?) or email like (?)",st,st, st) #
+    @students= Student.where("surname like (?) or email like (?)",st, st) #
     #display all the pfilters
     #@pfilters = Pfilter.all
     #displaying currnet user
