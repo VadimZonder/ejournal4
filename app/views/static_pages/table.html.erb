@@ -7,7 +7,7 @@
  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-	<title>Teacher/Student Table</title>
+	<title>Light Bootstrap Dashboard by Creative Tim</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -43,7 +43,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    EJOURNAL
+                    Creative Tim
                 </a>
             </div>
 
@@ -138,12 +138,6 @@
                                 <li><a href="#">Another notification</a></li>
                               </ul>
                         </li>
-                        <!-------------------------------------------------------------------------------  headers-->
-                    <a class="navbar-brand" href="/">
-                      <%= "Home"%>
-                    <% link_to "Home", root_path  %>
-                    </a>
- <!-------------------------------------------------------------------------------  END  headers-->  
                         <li>
                            <a href="">
                                 <i class="fa fa-search"></i>
@@ -152,15 +146,11 @@
                         </li>
                     </ul>
 
-
-  
-  
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                           
-                                 <p><%= render 'layouts/search' %></p>
-                               <!--<p>Account</p>-->
-                          
+                           <a href="">
+                               <p>Account</p>
+                            </a>
                         </li>
                         <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -191,135 +181,135 @@
             </div>
         </nav>
 
-
- 
-<thead>
-<tr>
-
-
-</tr>
-</thead> 
-
-<!-------------------------------------------------------------------------------  All students TABLE BEGIN------------------>   
-<tbody class="table-hover">
-<tr>
-</tr>
-</tbody>
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Filter Table</h4>
-                                <p class="category">This table is filtered by the school,surname or email</p>
-                                <p><%= link_to 'Add a Student Filter', new_pfilter_path %> </p>
+                                <h4 class="title">Striped Table with Hover</h4>
+                                <p class="category">Here is a subtitle for this table</p>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
-                                          <th>School/Surname/Email</th>
-                                          <th>User's Email(delete)</th>
-                                          <th class="text-left">Show/Edit/Delete</th>
+                                        <th>ID</th>
+                                    	<th>Name</th>
+                                    	<th>Salary</th>
+                                    	<th>Country</th>
+                                    	<th>City</th>
                                     </thead>
-                                     
- <!--ROW 1 -->
-
                                     <tbody>
-                                        
-                                       <tr>   
-                                        <!--ADD IF NO PFILTERS to display no filters result-->
-                                        <!--IF ONE STUDENT IS THE RESULT OF THE FILTER THEN MAYBE GO STRAIGN TO MARKS?-->
-                                         <% @pfilters.each_slice(2) do |pfilter1, pfilter2| %>
-                                          <tr>
-                                            <td><a href="/pfilter/<%= pfilter1.pfilter %>"><%= pfilter1.pfilter %></a></td>
-                                            <td><%= pfilter1.email %></td>
-                                            <td><% if user_signed_in? %>
-                                                    <%= link_to 'Show', pfilter1 %> /
-                                                    <%= link_to 'Edit', edit_pfilter_path(pfilter1) %> /
-                                                    <%= link_to 'Delete', pfilter1, method: :delete, data: { confirm: 'Are you sure?' } %>
-                                                <%else%>
-                                                <%end%>
-                                                </td>
-                                          </tr>
-                                     
-
- 
- <!--ROW 2 -->
-                                     <tbody>
                                         <tr>
-                                            <td><a href="/pfilter/<%= pfilter2.pfilter %>"><%= pfilter2.pfilter %></a></td>
-                                            <td><%= pfilter2.email %></td>
-                                            <td><% if user_signed_in? %>
-                                                    <%= link_to 'Show', pfilter2 %> /
-                                                    <%= link_to 'Edit', edit_pfilter_path(pfilter2) %> /
-                                                    <%= link_to 'Delete', pfilter2, method: :delete, data: { confirm: 'Are you sure?' } %>
-                                                <%else%>
-                                                <%end%>
-                                                </td>    
-                                         </tr>
-                                         <% end %>               
+                                        	<td>1</td>
+                                        	<td>Dakota Rice</td>
+                                        	<td>$36,738</td>
+                                        	<td>Niger</td>
+                                        	<td>Oud-Turnhout</td>
+                                        </tr>
+                                        <tr>
+                                        	<td>2</td>
+                                        	<td>Minerva Hooper</td>
+                                        	<td>$23,789</td>
+                                        	<td>Curaçao</td>
+                                        	<td>Sinaai-Waas</td>
+                                        </tr>
+                                        <tr>
+                                        	<td>3</td>
+                                        	<td>Sage Rodriguez</td>
+                                        	<td>$56,142</td>
+                                        	<td>Netherlands</td>
+                                        	<td>Baileux</td>
+                                        </tr>
+                                        <tr>
+                                        	<td>4</td>
+                                        	<td>Philip Chaney</td>
+                                        	<td>$38,735</td>
+                                        	<td>Korea, South</td>
+                                        	<td>Overland Park</td>
+                                        </tr>
+                                        <tr>
+                                        	<td>5</td>
+                                        	<td>Doris Greene</td>
+                                        	<td>$63,542</td>
+                                        	<td>Malawi</td>
+                                        	<td>Feldkirchen in Kärnten</td>
+                                        </tr>
+                                        <tr>
+                                        	<td>6</td>
+                                        	<td>Mason Porter</td>
+                                        	<td>$78,615</td>
+                                        	<td>Chile</td>
+                                        	<td>Gloucester</td>
+                                        </tr>
                                     </tbody>
-                                     <%# end %>
                                 </table>
 
                             </div>
                         </div>
                     </div>
-                     <!-------------------------------------------------------------------------------  All students TABLE END------------------>   
-
-
- <!-------------------------------------------------------------------------------  FILTERS TABLE BEGIN------------------>   
-
-
 
 
                     <div class="col-md-12">
                         <div class="card card-plain">
                             <div class="header">
-                                <h4 class="title">ALL Students Table</h4>
-                                <p class="category">Evaluate Your Student </p>
-                                <p class="category"><%= link_to ' ADD New Student', new_student_path %></p>
+                                <h4 class="title">Table on Plain Background</h4>
+                                <p class="category">Here is a subtitle for this table</p>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover">
                                     <thead>
-                                            <th class="text-left">Name</th>
-                                        <th class="text-left">Date of Birth</th>
-                                        <th class="text-left">School</th>
-                                        <th class="text-left">Email</th>
-                                        <th class="text-left">Comment</th>
-                                        <th class="text-left">Edit/Delete</th>
+                                        <th>ID</th>
+                                    	<th>Name</th>
+                                    	<th>Salary</th>
+                                    	<th>Country</th>
+                                    	<th>City</th>
                                     </thead>
                                     <tbody>
-                                        
-                                         <tr>
-                                      
-
-                                         <% @students.each do |student| %>
-<tr>
-<td class="text-left"><%= link_to "#{student.name} ", student %><%= student.surname  %><%= link_to ' (Add a Result)', new_result_path %></td>
-<td class="text-left"><%= "#{student.day_of_birth} /" %>  
-            <%= "#{student.month_of_birth} /"%>
-            <%= student.year_of_birth %></td>
-<td class="text-left"> <%= student.school %></td>
-<td class="text-left"> <%= student.email %><%= link_to(" Results index", {:controller => 'results', :action => 'index', :id =>  student.email}) %>
-</td>
-<td class="text-left"> <%= student.comment %></td>
-<td class="text-left"> <% if user_signed_in? %>
-              <%= link_to 'Edit', edit_student_path(student) %> or
-              <%= link_to 'Delete', student, method: :delete, data: { confirm: 'Are you sure?' } %>
-               <%else%>
-               
-               
-            <%end%> </td>
-               <%end%>
-             </tr>
-           </tbody>
-           
+                                        <tr>
+                                        	<td>1</td>
+                                        	<td>Dakota Rice</td>
+                                        	<td>$36,738</td>
+                                        	<td>Niger</td>
+                                        	<td>Oud-Turnhout</td>
+                                        </tr>
+                                        <tr>
+                                        	<td>2</td>
+                                        	<td>Minerva Hooper</td>
+                                        	<td>$23,789</td>
+                                        	<td>Curaçao</td>
+                                        	<td>Sinaai-Waas</td>
+                                        </tr>
+                                        <tr>
+                                        	<td>3</td>
+                                        	<td>Sage Rodriguez</td>
+                                        	<td>$56,142</td>
+                                        	<td>Netherlands</td>
+                                        	<td>Baileux</td>
+                                        </tr>
+                                        <tr>
+                                        	<td>4</td>
+                                        	<td>Philip Chaney</td>
+                                        	<td>$38,735</td>
+                                        	<td>Korea, South</td>
+                                        	<td>Overland Park</td>
+                                        </tr>
+                                        <tr>
+                                        	<td>5</td>
+                                        	<td>Doris Greene</td>
+                                        	<td>$63,542</td>
+                                        	<td>Malawi</td>
+                                        	<td>Feldkirchen in Kärnten</td>
+                                        </tr>
+                                        <tr>
+                                        	<td>6</td>
+                                        	<td>Mason Porter</td>
+                                        	<td>$78,615</td>
+                                        	<td>Chile</td>
+                                        	<td>Gloucester</td>
+                                        </tr>
+                                    </tbody>
                                 </table>
-
-
 
                             </div>
                         </div>
@@ -329,32 +319,6 @@
                 </div>
             </div>
         </div>
-        
-        
- <!-------------------------------------------------------------------------------  FILTERS TABLE END------------------>       
-        
-
-
-                </div>
-            </div>
-        </div>
-
-
-
-
-    
-  <%= link_to 'Personal Filter', new_pfilter_path %>
-  <br/>
-  <%=render  'layouts/pfilters'%>
-  
-
-    
-
-  
-
-
-
-
 
         <footer class="footer">
             <div class="container-fluid">
@@ -383,7 +347,7 @@
                     </ul>
                 </nav>
                 <p class="copyright pull-right">
-                    &copy;  <!--<script>document.write(new Date().getFullYear())</script>--><a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
                 </p>
             </div>
         </footer>
@@ -416,28 +380,3 @@
 
 
 </html>
-
-
-
-
-
-
-<!--
-<html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<title>Table Style</title>
-	<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
-</head>
-
-<p id="notice"><%# notice %></p>
-
-<h1>students/index</h1>
-<body>
-    -->
-    
-
-
- <!-- </body>
-
-

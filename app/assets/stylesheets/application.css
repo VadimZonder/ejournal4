@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+#application_body{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+ }
+ 
+ /*
+.filters{
+        position: absolute;
+    margin-left: 450px;
+
+ }*/
+
+ 

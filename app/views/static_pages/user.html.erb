@@ -4,33 +4,31 @@
 	<meta charset="utf-8" />
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-	<title>Teacher/Student Table</title>
+
+	<title>Light Bootstrap Dashboard by Creative Tim</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
 
     <!-- Bootstrap core CSS     -->
-    <link href="assets/stylesheets/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
-    <link href="assets/stylesheets/animate.min.css" rel="stylesheet"/>
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
 
     <!--  Light Bootstrap Table core CSS    -->
-    <link href="assets/stylesheets/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+    <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
 
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets/stylesheets/demo.css" rel="stylesheet" />
+    <link href="assets/css/demo.css" rel="stylesheet" />
 
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="assets/stylesheets/pe-icon-7-stroke.css" rel="stylesheet" />
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -43,7 +41,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    EJOURNAL
+                    Creative Tim
                 </a>
             </div>
 
@@ -54,13 +52,13 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="user.html">
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="table.html">
                         <i class="pe-7s-note2"></i>
                         <p>Table List</p>
@@ -110,7 +108,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Table List</a>
+                    <a class="navbar-brand" href="#">User</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -138,12 +136,6 @@
                                 <li><a href="#">Another notification</a></li>
                               </ul>
                         </li>
-                        <!-------------------------------------------------------------------------------  headers-->
-                    <a class="navbar-brand" href="/">
-                      <%= "Home"%>
-                    <% link_to "Home", root_path  %>
-                    </a>
- <!-------------------------------------------------------------------------------  END  headers-->  
                         <li>
                            <a href="">
                                 <i class="fa fa-search"></i>
@@ -152,15 +144,11 @@
                         </li>
                     </ul>
 
-
-  
-  
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                           
-                                 <p><%= render 'layouts/search' %></p>
-                               <!--<p>Account</p>-->
-                          
+                           <a href="">
+                               <p>Account</p>
+                            </a>
                         </li>
                         <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -192,168 +180,130 @@
         </nav>
 
 
- 
-<thead>
-<tr>
-
-
-</tr>
-</thead> 
-
-<!-------------------------------------------------------------------------------  All students TABLE BEGIN------------------>   
-<tbody class="table-hover">
-<tr>
-</tr>
-</tbody>
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Filter Table</h4>
-                                <p class="category">This table is filtered by the school,surname or email</p>
-                                <p><%= link_to 'Add a Student Filter', new_pfilter_path %> </p>
+                                <h4 class="title">Edit Profile</h4>
                             </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover table-striped">
-                                    <thead>
-                                          <th>School/Surname/Email</th>
-                                          <th>User's Email(delete)</th>
-                                          <th class="text-left">Show/Edit/Delete</th>
-                                    </thead>
-                                     
- <!--ROW 1 -->
+                            <div class="content">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>Company (disabled)</label>
+                                                <input type="text" class="form-control" disabled placeholder="Company" value="Creative Code Inc.">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Username</label>
+                                                <input type="text" class="form-control" placeholder="Username" value="michael23">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Email address</label>
+                                                <input type="email" class="form-control" placeholder="Email">
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                    <tbody>
-                                        
-                                       <tr>   
-                                        <!--ADD IF NO PFILTERS to display no filters result-->
-                                        <!--IF ONE STUDENT IS THE RESULT OF THE FILTER THEN MAYBE GO STRAIGN TO MARKS?-->
-                                         <% @pfilters.each_slice(2) do |pfilter1, pfilter2| %>
-                                          <tr>
-                                            <td><a href="/pfilter/<%= pfilter1.pfilter %>"><%= pfilter1.pfilter %></a></td>
-                                            <td><%= pfilter1.email %></td>
-                                            <td><% if user_signed_in? %>
-                                                    <%= link_to 'Show', pfilter1 %> /
-                                                    <%= link_to 'Edit', edit_pfilter_path(pfilter1) %> /
-                                                    <%= link_to 'Delete', pfilter1, method: :delete, data: { confirm: 'Are you sure?' } %>
-                                                <%else%>
-                                                <%end%>
-                                                </td>
-                                          </tr>
-                                     
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>First Name</label>
+                                                <input type="text" class="form-control" placeholder="Company" value="Mike">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Last Name</label>
+                                                <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
+                                            </div>
+                                        </div>
+                                    </div>
 
- 
- <!--ROW 2 -->
-                                     <tbody>
-                                        <tr>
-                                            <td><a href="/pfilter/<%= pfilter2.pfilter %>"><%= pfilter2.pfilter %></a></td>
-                                            <td><%= pfilter2.email %></td>
-                                            <td><% if user_signed_in? %>
-                                                    <%= link_to 'Show', pfilter2 %> /
-                                                    <%= link_to 'Edit', edit_pfilter_path(pfilter2) %> /
-                                                    <%= link_to 'Delete', pfilter2, method: :delete, data: { confirm: 'Are you sure?' } %>
-                                                <%else%>
-                                                <%end%>
-                                                </td>    
-                                         </tr>
-                                         <% end %>               
-                                    </tbody>
-                                     <%# end %>
-                                </table>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Address</label>
+                                                <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>City</label>
+                                                <input type="text" class="form-control" placeholder="City" value="Mike">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Country</label>
+                                                <input type="text" class="form-control" placeholder="Country" value="Andrew">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Postal Code</label>
+                                                <input type="number" class="form-control" placeholder="ZIP Code">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>About Me</label>
+                                                <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-user">
+                            <div class="image">
+                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+                            </div>
+                            <div class="content">
+                                <div class="author">
+                                     <a href="#">
+                                    <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
+
+                                      <h4 class="title">Mike Andrew<br />
+                                         <small>michael24</small>
+                                      </h4>
+                                    </a>
+                                </div>
+                                <p class="description text-center"> "Lamborghini Mercy <br>
+                                                    Your chick she so thirsty <br>
+                                                    I'm in that two seat Lambo"
+                                </p>
+                            </div>
+                            <hr>
+                            <div class="text-center">
+                                <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
+                                <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
+                                <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
 
                             </div>
                         </div>
                     </div>
-                     <!-------------------------------------------------------------------------------  All students TABLE END------------------>   
-
-
- <!-------------------------------------------------------------------------------  FILTERS TABLE BEGIN------------------>   
-
-
-
-
-                    <div class="col-md-12">
-                        <div class="card card-plain">
-                            <div class="header">
-                                <h4 class="title">ALL Students Table</h4>
-                                <p class="category">Evaluate Your Student </p>
-                                <p class="category"><%= link_to ' ADD New Student', new_student_path %></p>
-                            </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover">
-                                    <thead>
-                                            <th class="text-left">Name</th>
-                                        <th class="text-left">Date of Birth</th>
-                                        <th class="text-left">School</th>
-                                        <th class="text-left">Email</th>
-                                        <th class="text-left">Comment</th>
-                                        <th class="text-left">Edit/Delete</th>
-                                    </thead>
-                                    <tbody>
-                                        
-                                         <tr>
-                                      
-
-                                         <% @students.each do |student| %>
-<tr>
-<td class="text-left"><%= link_to "#{student.name} ", student %><%= student.surname  %><%= link_to ' (Add a Result)', new_result_path %></td>
-<td class="text-left"><%= "#{student.day_of_birth} /" %>  
-            <%= "#{student.month_of_birth} /"%>
-            <%= student.year_of_birth %></td>
-<td class="text-left"> <%= student.school %></td>
-<td class="text-left"> <%= student.email %><%= link_to(" Results index", {:controller => 'results', :action => 'index', :id =>  student.email}) %>
-</td>
-<td class="text-left"> <%= student.comment %></td>
-<td class="text-left"> <% if user_signed_in? %>
-              <%= link_to 'Edit', edit_student_path(student) %> or
-              <%= link_to 'Delete', student, method: :delete, data: { confirm: 'Are you sure?' } %>
-               <%else%>
-               
-               
-            <%end%> </td>
-               <%end%>
-             </tr>
-           </tbody>
-           
-                                </table>
-
-
-
-                            </div>
-                        </div>
-                    </div>
-
 
                 </div>
             </div>
         </div>
-        
-        
- <!-------------------------------------------------------------------------------  FILTERS TABLE END------------------>       
-        
-
-
-                </div>
-            </div>
-        </div>
-
-
-
-
-    
-  <%= link_to 'Personal Filter', new_pfilter_path %>
-  <br/>
-  <%=render  'layouts/pfilters'%>
-  
-
-    
-
-  
-
-
-
 
 
         <footer class="footer">
@@ -383,11 +333,10 @@
                     </ul>
                 </nav>
                 <p class="copyright pull-right">
-                    &copy;  <!--<script>document.write(new Date().getFullYear())</script>--><a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
                 </p>
             </div>
         </footer>
-
 
     </div>
 </div>
@@ -414,30 +363,4 @@
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
 
-
 </html>
-
-
-
-
-
-
-<!--
-<html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<title>Table Style</title>
-	<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
-</head>
-
-<p id="notice"><%# notice %></p>
-
-<h1>students/index</h1>
-<body>
-    -->
-    
-
-
- <!-- </body>
-
-

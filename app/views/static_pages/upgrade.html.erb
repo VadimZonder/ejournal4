@@ -4,46 +4,49 @@
 	<meta charset="utf-8" />
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-	<title>Teacher/Student Table</title>
+
+	<title>Light Bootstrap Dashboard by Creative Tim</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
 
     <!-- Bootstrap core CSS     -->
-    <link href="assets/stylesheets/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
-    <link href="assets/stylesheets/animate.min.css" rel="stylesheet"/>
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
 
     <!--  Light Bootstrap Table core CSS    -->
-    <link href="assets/stylesheets/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+    <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
 
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets/stylesheets/demo.css" rel="stylesheet" />
+    <link href="assets/css/demo.css" rel="stylesheet" />
 
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="assets/stylesheets/pe-icon-7-stroke.css" rel="stylesheet" />
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+
 </head>
 <body>
 
 <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
 
-    <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
+    <!--
 
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
 
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    EJOURNAL
+                    Creative Tim
                 </a>
             </div>
 
@@ -60,7 +63,7 @@
                         <p>User Profile</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="table.html">
                         <i class="pe-7s-note2"></i>
                         <p>Table List</p>
@@ -90,7 +93,7 @@
                         <p>Notifications</p>
                     </a>
                 </li>
-				<li class="active-pro">
+				<li class="active active-pro">
                     <a href="upgrade.html">
                         <i class="pe-7s-rocket"></i>
                         <p>Upgrade to PRO</p>
@@ -110,7 +113,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Table List</a>
+                    <a class="navbar-brand" href="#">Upgrade</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -138,12 +141,6 @@
                                 <li><a href="#">Another notification</a></li>
                               </ul>
                         </li>
-                        <!-------------------------------------------------------------------------------  headers-->
-                    <a class="navbar-brand" href="/">
-                      <%= "Home"%>
-                    <% link_to "Home", root_path  %>
-                    </a>
- <!-------------------------------------------------------------------------------  END  headers-->  
                         <li>
                            <a href="">
                                 <i class="fa fa-search"></i>
@@ -152,15 +149,11 @@
                         </li>
                     </ul>
 
-
-  
-  
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                           
-                                 <p><%= render 'layouts/search' %></p>
-                               <!--<p>Account</p>-->
-                          
+                           <a href="">
+                               <p>Account</p>
+                            </a>
                         </li>
                         <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -192,168 +185,83 @@
         </nav>
 
 
- 
-<thead>
-<tr>
-
-
-</tr>
-</thead> 
-
-<!-------------------------------------------------------------------------------  All students TABLE BEGIN------------------>   
-<tbody class="table-hover">
-<tr>
-</tr>
-</tbody>
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
+					<div class="col-md-8 col-md-offset-2">
                         <div class="card">
-                            <div class="header">
-                                <h4 class="title">Filter Table</h4>
-                                <p class="category">This table is filtered by the school,surname or email</p>
-                                <p><%= link_to 'Add a Student Filter', new_pfilter_path %> </p>
+                            <div class="header text-center">
+                                <h4 class="title">Light Bootstrap Dashboard PRO</h4>
+                                <p class="category">Are you looking for more components? Please check our Premium Version of Light Bootstrap Dashboard.</p>
+								<br>
                             </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover table-striped">
+                            <div class="content table-responsive table-full-width table-upgrade">
+                                <table class="table">
                                     <thead>
-                                          <th>School/Surname/Email</th>
-                                          <th>User's Email(delete)</th>
-                                          <th class="text-left">Show/Edit/Delete</th>
+                                        <th></th>
+                                    	<th class="text-center">Free</th>
+                                    	<th class="text-center">PRO</th>
                                     </thead>
-                                     
- <!--ROW 1 -->
-
                                     <tbody>
-                                        
-                                       <tr>   
-                                        <!--ADD IF NO PFILTERS to display no filters result-->
-                                        <!--IF ONE STUDENT IS THE RESULT OF THE FILTER THEN MAYBE GO STRAIGN TO MARKS?-->
-                                         <% @pfilters.each_slice(2) do |pfilter1, pfilter2| %>
-                                          <tr>
-                                            <td><a href="/pfilter/<%= pfilter1.pfilter %>"><%= pfilter1.pfilter %></a></td>
-                                            <td><%= pfilter1.email %></td>
-                                            <td><% if user_signed_in? %>
-                                                    <%= link_to 'Show', pfilter1 %> /
-                                                    <%= link_to 'Edit', edit_pfilter_path(pfilter1) %> /
-                                                    <%= link_to 'Delete', pfilter1, method: :delete, data: { confirm: 'Are you sure?' } %>
-                                                <%else%>
-                                                <%end%>
-                                                </td>
-                                          </tr>
-                                     
-
- 
- <!--ROW 2 -->
-                                     <tbody>
                                         <tr>
-                                            <td><a href="/pfilter/<%= pfilter2.pfilter %>"><%= pfilter2.pfilter %></a></td>
-                                            <td><%= pfilter2.email %></td>
-                                            <td><% if user_signed_in? %>
-                                                    <%= link_to 'Show', pfilter2 %> /
-                                                    <%= link_to 'Edit', edit_pfilter_path(pfilter2) %> /
-                                                    <%= link_to 'Delete', pfilter2, method: :delete, data: { confirm: 'Are you sure?' } %>
-                                                <%else%>
-                                                <%end%>
-                                                </td>    
-                                         </tr>
-                                         <% end %>               
+                                        	<td>Components</td>
+                                        	<td>16</td>
+                                        	<td>115+</td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Plugins</td>
+                                        	<td>4</td>
+                                        	<td>14+</td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Example Pages</td>
+                                        	<td>4</td>
+                                        	<td>22+</td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Documentation</td>
+                                        	<td><i class="fa fa-times text-danger"></i></td>
+                                        	<td><i class="fa fa-check text-success"></td>
+                                        </tr>
+                                        <tr>
+                                        	<td>SASS Files</td>
+											<td><i class="fa fa-times text-danger"></i></td>
+                                        	<td><i class="fa fa-check text-success"></td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Login/Register/Lock Pages</td>
+											<td><i class="fa fa-times text-danger"></i></td>
+                                        	<td><i class="fa fa-check text-success"></td>
+                                        </tr>
+										<tr>
+                                        	<td>Premium Support</td>
+											<td><i class="fa fa-times text-danger"></i></td>
+                                        	<td><i class="fa fa-check text-success"></td>
+                                        </tr>
+										<tr>
+                                        	<td></td>
+											<td>Free</td>
+                                        	<td>Just $39</td>
+                                        </tr>
+										<tr>
+											<td></td>
+											<td>
+												<a href="#" class="btn btn-round btn-fill btn-default disabled">Current Version</a>
+											</td>
+											<td>
+												<a target="_blank" href="http://www.creative-tim.com/product/light-bootstrap-dashboard-pro/?ref=lbdupgrade" class="btn btn-round btn-fill btn-info">Upgrade to PRO</a>
+											</td>
+										</tr>
                                     </tbody>
-                                     <%# end %>
                                 </table>
 
                             </div>
                         </div>
                     </div>
-                     <!-------------------------------------------------------------------------------  All students TABLE END------------------>   
-
-
- <!-------------------------------------------------------------------------------  FILTERS TABLE BEGIN------------------>   
-
-
-
-
-                    <div class="col-md-12">
-                        <div class="card card-plain">
-                            <div class="header">
-                                <h4 class="title">ALL Students Table</h4>
-                                <p class="category">Evaluate Your Student </p>
-                                <p class="category"><%= link_to ' ADD New Student', new_student_path %></p>
-                            </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover">
-                                    <thead>
-                                            <th class="text-left">Name</th>
-                                        <th class="text-left">Date of Birth</th>
-                                        <th class="text-left">School</th>
-                                        <th class="text-left">Email</th>
-                                        <th class="text-left">Comment</th>
-                                        <th class="text-left">Edit/Delete</th>
-                                    </thead>
-                                    <tbody>
-                                        
-                                         <tr>
-                                      
-
-                                         <% @students.each do |student| %>
-<tr>
-<td class="text-left"><%= link_to "#{student.name} ", student %><%= student.surname  %><%= link_to ' (Add a Result)', new_result_path %></td>
-<td class="text-left"><%= "#{student.day_of_birth} /" %>  
-            <%= "#{student.month_of_birth} /"%>
-            <%= student.year_of_birth %></td>
-<td class="text-left"> <%= student.school %></td>
-<td class="text-left"> <%= student.email %><%= link_to(" Results index", {:controller => 'results', :action => 'index', :id =>  student.email}) %>
-</td>
-<td class="text-left"> <%= student.comment %></td>
-<td class="text-left"> <% if user_signed_in? %>
-              <%= link_to 'Edit', edit_student_path(student) %> or
-              <%= link_to 'Delete', student, method: :delete, data: { confirm: 'Are you sure?' } %>
-               <%else%>
-               
-               
-            <%end%> </td>
-               <%end%>
-             </tr>
-           </tbody>
-           
-                                </table>
-
-
-
-                            </div>
-                        </div>
-                    </div>
-
-
                 </div>
+
             </div>
         </div>
-        
-        
- <!-------------------------------------------------------------------------------  FILTERS TABLE END------------------>       
-        
-
-
-                </div>
-            </div>
-        </div>
-
-
-
-
-    
-  <%= link_to 'Personal Filter', new_pfilter_path %>
-  <br/>
-  <%=render  'layouts/pfilters'%>
-  
-
-    
-
-  
-
-
-
 
 
         <footer class="footer">
@@ -383,11 +291,10 @@
                     </ul>
                 </nav>
                 <p class="copyright pull-right">
-                    &copy;  <!--<script>document.write(new Date().getFullYear())</script>--><a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
                 </p>
             </div>
         </footer>
-
 
     </div>
 </div>
@@ -414,30 +321,4 @@
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
 
-
 </html>
-
-
-
-
-
-
-<!--
-<html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<title>Table Style</title>
-	<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
-</head>
-
-<p id="notice"><%# notice %></p>
-
-<h1>students/index</h1>
-<body>
-    -->
-    
-
-
- <!-- </body>
-
-
