@@ -2,6 +2,7 @@ class ParentsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
    before_action :set_student, only: [:show]
    before_action :set_result, only: [:show, :edit, :update, :destroy], except: [:parent_filter, :index]
+   
 
 
 def lfilter
@@ -118,7 +119,8 @@ def index
     @user = current_user.email
     #display the pfilters with the current user
     @lfilters= Lfilter.where("email like ? ", @user)  
- 
+
+
 end
 #(if from browser /login is called)
 def login

@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get "dashboard.html", to: "static_pages#dashboard"
   get "views/static_pages/table.html.erb", to: "static_pages#table"
   
-  
-  
+  #!!ADDED RESENTLY
+    resources :results
   
     get 'lfilter/:lfilter', to: 'parents#lfilter'
   resources :lfilters

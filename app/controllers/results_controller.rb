@@ -2,6 +2,8 @@ class ResultsController < ApplicationController
  #granting and limmiting access for different methods  
  before_action :set_result, only: [:show, :edit, :update, :destroy], except: [:parent_result]
 
+#display results from newest to oldest = .order("created_at DESC").all
+#cannot add new result, maybe because all results of filters ar eon 1 page .order("created_at DESC").all
   # GET /results
   # GET /results.json
   def index
@@ -22,8 +24,12 @@ class ResultsController < ApplicationController
     @st=@splitEmailF.to_s+@at.to_s+@splitEmailL.to_s
     #saving the reconstructed email into a variable
     st=@splitEmailF.to_s+@at.to_s+@splitEmailL.to_s
-    #searching the DB to match all the results of a student with the unique email
-    @results= Result.where("email like ? ",st)
+    #searching the DB to match all the results of a student with the unique email and displaying newst first
+    @results= Result.order("created_at DESC").where("email like ? ",st)
+    
+    #try change to just @resilts and to = Result.where("email like ? ",st)
+    @resultsChart= Result.where("email like ? ",st)
+
   end
   
   def current_student
@@ -38,8 +44,12 @@ def parent_result
   @URI = @URI.split('/').last
   @URI = @URI.to_s
   st=@URI
-  #searching the DB to match all the results of a student with the unique email
-  @results= Result.where("email like ? ",st) 
+  #searching the DB to match all the results of a student with the unique email and displaying newst first
+   @results= Result.order("created_at DESC").where("email like ? ",st)
+  
+  
+  #try change to just @resilts and to = Result.where("email like ? ",st)
+    @resultsChart= Result.where("email like ? ",st)
 end
 
   # GET /results/1

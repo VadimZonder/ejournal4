@@ -29,6 +29,16 @@ gem 'bcrypt'
 gem 'devise', '4.3.0'
 
 
+
+#Gems for charts/analysis________
+gem 'chartkick', '~> 1.2.4'
+gem 'highcharts-rails'
+gem 'groupdate', '~> 3.2.0'
+gem 'active_median', '~> 0.1.0'
+#________________________________
+
+
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

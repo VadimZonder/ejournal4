@@ -43,7 +43,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    EJOURNAL
+                    Teacher
                 </a>
             </div>
 
@@ -162,29 +162,26 @@
                                <!--<p>Account</p>-->
                           
                         </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-										Dropdown
-										<b class="caret"></b>
-									</p>
+                        
+                        
+                         <li>
+                     <a href="">
+                      <p><%= "Welcome   #{@user}" %></p>
+                      </a>
+                      </li>
+                      <!--USER name + surename END----------------------------------------------------------------------------------------->
 
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <p>Log out</p>
-                            </a>
-                        </li>
+                               <% if current_user %>
+                       
+                         <li>  
+                            <a href="logout">
+                 
+                 <%= "Log Out"%>
+                 <% link_to "Log Out", logout_path  %>
+                 </a>
+                </li> 
+          
+          <% end %>
 						<li class="separator hidden-lg hidden-md"></li>
                     </ul>
                 </div>
@@ -200,7 +197,7 @@
 </tr>
 </thead> 
 
-<!-------------------------------------------------------------------------------  All students TABLE BEGIN------------------>   
+<!-------------------------------------------------------------------------------  Filters TABLE BEGIN------------------>   
 <tbody class="table-hover">
 <tr>
 </tr>
@@ -224,52 +221,44 @@
                                     </thead>
                                      
  <!--ROW 1 -->
+<!-- check if the code below works. if deleting the table all works so the prob is in the tble / the prob is that for sure the lfilters themselves is more than 0-->
+<!-- check for 0 filters -->
+<% if @pfilters.length == 0 %>
 
+<h2>There are no matches in this filter (add delete of this filter)</h2>
+<% end %>
                                     <tbody>
                                         
                                        <tr>   
                                         <!--ADD IF NO PFILTERS to display no filters result-->
                                         <!--IF ONE STUDENT IS THE RESULT OF THE FILTER THEN MAYBE GO STRAIGN TO MARKS?-->
-                                         <% @pfilters.each_slice(2) do |pfilter1, pfilter2| %>
+                                        <!-- this should nave ELSE here from if filters==0-->
+                                      
+                                         <% @pfilters.each do |pfilter| %>
                                           <tr>
-                                            <td><a href="/pfilter/<%= pfilter1.pfilter %>"><%= pfilter1.pfilter %></a></td>
-                                            <td><%= pfilter1.email %></td>
+                                            <td><a href="/pfilter/<%= pfilter.pfilter %>"><%= pfilter.pfilter %></a></td>
+                                            <td><%= pfilter.email %></td>
                                             <td><% if user_signed_in? %>
-                                                    <%= link_to 'Show', pfilter1 %> /
-                                                    <%= link_to 'Edit', edit_pfilter_path(pfilter1) %> /
-                                                    <%= link_to 'Delete', pfilter1, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                                    <%= link_to 'Show', pfilter %> /
+                                                    <%= link_to 'Edit', edit_pfilter_path(pfilter) %> /
+                                                    <%= link_to 'Delete', pfilter, method: :delete, data: { confirm: 'Are you sure?' } %>
                                                 <%else%>
                                                 <%end%>
                                                 </td>
                                           </tr>
                                      
-
- 
- <!--ROW 2 -->
-                                     <tbody>
-                                        <tr>
-                                            <td><a href="/pfilter/<%= pfilter2.pfilter %>"><%= pfilter2.pfilter %></a></td>
-                                            <td><%= pfilter2.email %></td>
-                                            <td><% if user_signed_in? %>
-                                                    <%= link_to 'Show', pfilter2 %> /
-                                                    <%= link_to 'Edit', edit_pfilter_path(pfilter2) %> /
-                                                    <%= link_to 'Delete', pfilter2, method: :delete, data: { confirm: 'Are you sure?' } %>
-                                                <%else%>
-                                                <%end%>
-                                                </td>    
-                                         </tr>
-                                         <% end %>               
-                                    </tbody>
-                                     <%# end %>
+                                   
+                                     <% end %>
+                                     
                                 </table>
 
                             </div>
                         </div>
                     </div>
-                     <!-------------------------------------------------------------------------------  All students TABLE END------------------>   
+                     <!-------------------------------------------------------------------------------  Filter TABLE END------------------>   
 
 
- <!-------------------------------------------------------------------------------  FILTERS TABLE BEGIN------------------>   
+ <!------------------------------------------------------------------------------- All Students TABLE BEGIN------------------>   
 
 
 
@@ -277,7 +266,7 @@
                     <div class="col-md-12">
                         <div class="card card-plain">
                             <div class="header">
-                                <h4 class="title">ALL Students Table</h4>
+                                <h4 class="title">ALL Students By Filters Table</h4>
                                 <p class="category">Evaluate Your Student </p>
                                 <p class="category"><%= link_to ' ADD New Student', new_student_path %></p>
                             </div>
@@ -291,67 +280,65 @@
                                         <th class="text-left">Comment</th>
                                         <th class="text-left">Edit/Delete</th>
                                     </thead>
+                        
+
+                                    
+                                     <!--ROW 1 -->
+<!-- check if the code below works. if deleting the table all works so the prob is in the tble / the prob is that for sure the lfilters themselves is more than 0-->
+<!-- check for 0 filters -->
+<% if @pfilters.length == 0 || @students.length == 0 %>
+
+<h2>There are no matches in this filter (add delete of this filter)</h2>
+<% end %>
+
                                     <tbody>
                                         
                                          <tr>
+                                             <!--ADD IF NO PFILTERS to display no filters result-->
+                                        <!--IF ONE STUDENT IS THE RESULT OF THE FILTER THEN MAYBE GO STRAIGN TO MARKS?-->
                                       
-
+                                <% @pfilters.each do |pfilter| %>
                                          <% @students.each do |student| %>
-<tr>
-<td class="text-left"><%= link_to "#{student.name} ", student %><%= student.surname  %><%= link_to ' (Add a Result)', new_result_path %></td>
-<td class="text-left"><%= "#{student.day_of_birth} /" %>  
+<% if pfilter.pfilter.casecmp(student.surname) == 0 || pfilter.pfilter.casecmp(student.email) == 0 ||  pfilter.pfilter.casecmp(student.school) == 0%>
+                                          <tr>
+<td ><%= link_to "#{student.name} ", student %><%= student.surname  %></td>
+<td ><%= "#{student.day_of_birth} /" %>  
             <%= "#{student.month_of_birth} /"%>
             <%= student.year_of_birth %></td>
-<td class="text-left"> <%= student.school %></td>
-<td class="text-left"> <%= student.email %><%= link_to(" Results index", {:controller => 'results', :action => 'index', :id =>  student.email}) %>
+<td > <%= student.school %></td>
+<td > <%= student.email %><%= link_to("Results", {:controller => 'results', :action => 'parent_result', :id =>  student.email}) %>
 </td>
-<td class="text-left"> <%= student.comment %></td>
-<td class="text-left"> <% if user_signed_in? %>
-              <%= link_to 'Edit', edit_student_path(student) %> or
-              <%= link_to 'Delete', student, method: :delete, data: { confirm: 'Are you sure?' } %>
-               <%else%>
-               
-               
-            <%end%> </td>
-               <%end%>
-             </tr>
-           </tbody>
-           
+<td > <%= student.comment %></td>
+
+ <% end %>
+
+ <% end %>
+
+
+</tbody>
+
+
+        </td>
+                                          </tr>
+                                     
+                                      <%end%>
+                                  
+                                     
                                 </table>
 
 
-
-                            </div>
-                        </div>
-                    </div>
-
-
                 </div>
             </div>
         </div>
         
         
- <!-------------------------------------------------------------------------------  FILTERS TABLE END------------------>       
+ <!-------------------------------------------------------------------------------  All Students TABLE END------------------>       
         
 
 
                 </div>
             </div>
         </div>
-
-
-
-
-    
-  <%= link_to 'Personal Filter', new_pfilter_path %>
-  <br/>
-  <%=render  'layouts/pfilters'%>
-  
-
-    
-
-  
-
 
 
 

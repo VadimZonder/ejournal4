@@ -1,3 +1,12 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.4/jquery.min.js"></script>
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js", "chartkick" %>
+  <%= javascript_include_tag "https://code.highcharts.com/highcharts.js", "chartkick" %>
+  <%= javascript_include_tag "https://code.highcharts.com/highcharts.src.js", "chartkick" %>
+  <%= stylesheet_link_tag 'http://yandex.st/bootstrap/3.1.1/css/bootstrap.min.css' %>
+  <%= javascript_include_tag 'http://yandex.st/bootstrap/3.1.1/js/bootstrap.min.js' %>
+  
+  
 <p id="notice"><%= notice %></p>
 <h1>Listing Results for Parents</h1>
 <%#@URI%>
@@ -28,5 +37,21 @@
   </tbody>
 </table>
 
+<!-- Line Chart - Multiple Series -->
+  <div class="col-xs-6">
+    <h3>Results Per Day</h3>
+    <%# line_chart   Result.pluck("classes").uniq.map { |c| { name: c, data: @resultsChart.where(classes: c).group_by_day(:updated_at, format: "%B %d, %Y").count }  }, discrete: true %>
+    <%= line_chart   Result.pluck("classes").uniq.map { |c| { name: c, data: @resultsChart.where(classes: c).group(:grade).count }  }, discrete: true %>
+  </div>
 <br>
+<div class="row">
+  <div class="col-xs-6">
+    <h3>Total Results</h3>
+    <%= pie_chart @resultsChart.group(:grade).count %>
+  </div>
+</div>
+<%= line_chart Result.group(:classes).group(:grade).count%>
+
+<%= bar_chart Result.group(:classes).sum(:grade) %>
+<%#column_chart @resultsChart.group_by_day(:created_at, format: "%l %P").count %>
 
