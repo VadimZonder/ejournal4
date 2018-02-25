@@ -26,4 +26,21 @@
 
  }*/
 
- 
+ .youtube {
+    float: none;
+    clear: both;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    overflow:hidden;
+    height: 0;
+}
+.youtube iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    
+}

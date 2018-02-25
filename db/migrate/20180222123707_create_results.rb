@@ -4,8 +4,9 @@ class CreateResults < ActiveRecord::Migration
       t.datetime :date_time
       t.string :classes
       t.string :teacher
-      t.string :grade
+      t.integer :grade
       t.string :email
+      t.string :parent_email
       t.string :comment
 
       t.timestamps null: false

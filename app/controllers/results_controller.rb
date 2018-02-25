@@ -114,6 +114,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def result_params
-      params.require(:result).permit(:date_time, :classes, :teacher, :grade, :email, :comment)
+      params.require(:result).permit(:date_time, :classes, :teacher, :grade, :email, :parent_email, :comment)
     end
 end

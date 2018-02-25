@@ -224,8 +224,14 @@
 <!-- check if the code below works. if deleting the table all works so the prob is in the tble / the prob is that for sure the lfilters themselves is more than 0-->
 <!-- check for 0 filters -->
 <% if @pfilters.length == 0 %>
-
-<h2>There are no matches in this filter (add delete of this filter)</h2>
+                        <div class="col-md-12">
+                        <div class="card card-plain">
+                            <div class="header">
+                                <h3 class="title">There are no matches in this filter (add a filter first to see resutls if student exist in the database)</h3>
+                                <p><%= link_to 'Add a Student Filter', new_pfilter_path %> </p>
+                            </div>
+                            </div>
+                            </div>
 <% end %>
                                     <tbody>
                                         
@@ -285,10 +291,16 @@
                                     
                                      <!--ROW 1 -->
 <!-- check if the code below works. if deleting the table all works so the prob is in the tble / the prob is that for sure the lfilters themselves is more than 0-->
-<!-- check for 0 filters -->
-<% if @pfilters.length == 0 || @students.length == 0 %>
-
-<h2>There are no matches in this filter (add delete of this filter)</h2>
+<!--    -->
+<% if @students.length == 0 || @pfilters.length == 0 %>
+                <div class="col-md-12">
+                        <div class="card card-plain">
+                            <div class="header">
+                                <h3 class="title">There are no resutls for the student/s you are looking for by what you are filtering (the student or/and the filter does not exist yet). Add a filter first and if same message appears then add a student)</h3>
+                                <p><%= link_to ' ADD New Student', new_student_path %> </p>
+                            </div>
+                            </div>
+                            </div>
 <% end %>
 
                                     <tbody>

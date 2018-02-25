@@ -1,0 +1,61 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.4/jquery.min.js"></script>
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js", "chartkick" %>
+  <%= javascript_include_tag "https://code.highcharts.com/highcharts.js", "chartkick" %>
+  <%= javascript_include_tag "https://code.highcharts.com/highcharts.src.js", "chartkick" %>
+  <%= stylesheet_link_tag 'http://yandex.st/bootstrap/3.1.1/css/bootstrap.min.css' %>
+  <%= javascript_include_tag 'http://yandex.st/bootstrap/3.1.1/js/bootstrap.min.js' %>
+  
+  
+<p id="notice"><%= notice %></p>
+<h1>Listing Results for Parents</h1>
+<%#@URI%>
+<table>
+  <thead>
+    <tr>
+      <th>Date time</th>
+      <th>Class</th>
+      <th>Teacher</th>
+      <th>Grade</th>
+      <th>Email</th>
+      <th>Comment</th>
+       <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @results.each do |result| %>
+      <tr>
+        <td><%= result.date_time.strftime("%d/%m/%Y at %H:%M") %></td>
+        <td><%= result.classes %></td>
+        <td><%= result.teacher %></td>
+        <td><%= result.grade %></td>
+        <td><%= result.email %>
+        </td>
+        <td><%= result.comment %></td>
+                <td><%= link_to 'Show', result %></td>
+        <td><%= link_to 'Edit', edit_result_path(result) %></td>
+        <td><%= link_to 'Destroy', result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!-- Line Chart - Multiple Series -->
+  <div class="col-xs-6">
+    <h3>Results Per Day</h3>
+    <%# line_chart   Result.pluck("classes").uniq.map { |c| { name: c, data: @resultsChart.where(classes: c).group_by_day(:updated_at, format: "%B %d, %Y").count }  }, discrete: true %>
+    <%= line_chart   Result.pluck("classes").uniq.map { |c| { name: c, data: @resultsChart.where(classes: c).group(:grade).count }  }, discrete: true %>
+  </div>
+<br>
+<div class="row">
+  <div class="col-xs-6">
+    <h3>Total Results</h3>
+    <%= pie_chart @resultsChart.group(:grade).count %>
+  </div>
+</div>
+<%= line_chart Result.group(:classes).group(:grade).count%>
+
+<%= bar_chart Result.group(:classes).sum(:grade) %>
+<%#column_chart @resultsChart.group_by_day(:created_at, format: "%l %P").count %>
+

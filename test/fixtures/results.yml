@@ -1,17 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  date_time: 2017-12-29 12:39:04
+  date_time: 2018-02-22 12:37:07
   classes: MyString
   teacher: MyString
-  grade: MyString
+  grade: 1
   email: MyString
+  parent_email: MyString
   comment: MyString
 
 two:
-  date_time: 2017-12-29 12:39:04
+  date_time: 2018-02-22 12:37:07
   classes: MyString
   teacher: MyString
-  grade: MyString
+  grade: 1
   email: MyString
+  parent_email: MyString
   comment: MyString

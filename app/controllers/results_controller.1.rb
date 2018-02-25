@@ -1,40 +1,60 @@
 class ResultsController < ApplicationController
-  before_action :set_result, only: [:show, :edit, :update, :destroy]
+ #granting and limmiting access for different methods  
+ before_action :set_result, only: [:show, :edit, :update, :destroy], except: [:parent_result]
 
+#display results from newest to oldest = .order("created_at DESC").all
+#cannot add new result, maybe because all results of filters ar eon 1 page .order("created_at DESC").all
   # GET /results
   # GET /results.json
   def index
+    #returning all the results in the DB for all the students
     #@results = Result.all
-             #:filter is column in the schema table filters
-             #
-   #st = 'vadimmalakhovski@google.com'
-    #now compare that filter name with student
-   #@results= Result.where("email like ? ", st)
-    
-    #@result = Result.find(params[:email])
-    @URI = request.original_url
-    @URI = @URI.split('=').last
-@URI = @URI.tr('%', '')
-@splitEmailF =  @URI.split("40").first
-@splitEmailL =  @URI.split("40").last
-@at="@"  
-@st=@splitEmailF.to_s+@at.to_s+@splitEmailL.to_s
-  
-    st=@splitEmailF.to_s+@at.to_s+@splitEmailL.to_s
-   @results= Result.where("email like ? ",st)
-    
 
-   
+    #get the current URI once on this page
+    @URI = request.original_url
+    #split the URI to get everything after the = sign
+    @URI = @URI.split('=').last
+    #take the % sign out of the string
+    @URI = @URI.tr('%', '')
+    #get everything befor 40 and everything after 40
+    @splitEmailF =  @URI.split("40").first
+    @splitEmailL =  @URI.split("40").last
+    # to add between first and last in order to reconstruct the email
+    @at="@"  
+    @st=@splitEmailF.to_s+@at.to_s+@splitEmailL.to_s
+    #saving the reconstructed email into a variable
+    st=@splitEmailF.to_s+@at.to_s+@splitEmailL.to_s
+    #searching the DB to match all the results of a student with the unique email and displaying newst first
+    @results= Result.order("created_at DESC").where("email like ? ",st)
+    
+    #try change to just @resilts and to = Result.where("email like ? ",st)
+    @resultsChart= Result.where("email like ? ",st)
+
   end
   
   def current_student
+    #add latter the reults of all the students
     
   end
+
+def parent_result
+  #results for parents. Here is simplified because there was no need for extra steps like in index
+  @URI = request.original_url
+  #split the URI to get everything after the / sign
+  @URI = @URI.split('/').last
+  @URI = @URI.to_s
+  st=@URI
+  #searching the DB to match all the results of a student with the unique email and displaying newst first
+   @results= Result.order("created_at DESC").where("email like ? ",st)
+  
+  
+  #try change to just @resilts and to = Result.where("email like ? ",st)
+    @resultsChart= Result.where("email like ? ",st)
+end
 
   # GET /results/1
   # GET /results/1.json
   def show
-
   end
 
   # GET /results/new
@@ -94,6 +114,6 @@ class ResultsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def result_params
-      params.require(:result).permit(:date_time, :student_id, :classes, :grade, :comments)
+      params.require(:result).permit(:date_time, :classes, :teacher, :grade, :email, :comment)
     end
 end

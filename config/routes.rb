@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   
+  resources :results
   resources :static_pages
   get "table.html", to: "static_pages#table"
   get "dashboard.html", to: "static_pages#dashboard"
   get "views/static_pages/table.html.erb", to: "static_pages#table"
   
   #!!ADDED RESENTLY
-    resources :results
-  
+    
     get 'lfilter/:lfilter', to: 'parents#lfilter'
   resources :lfilters
   get '/students/parent_filter/', to: 'students#parent_filter'

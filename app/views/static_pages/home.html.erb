@@ -54,42 +54,43 @@
 
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.html">
+                    <a href="parents.html">
                         <i class="pe-7s-graph"></i>
-                        <p>Dashboard</p>
+                        <p>Parents</p>
                     </a>
                 </li>
                 <li>
-                    <a href="user.html">
+                    <a href="students.html">
                         <i class="pe-7s-user"></i>
-                        <p>User Profile</p>
+                        <p>Teachers</p>
                     </a>
                 </li>
                 <li>
-                 <%= link_to("table", {:controller => 'static_page', :action => 'table'}) %>
                     <a href="views/static_pages/table.html.erb">
                         <i class="pe-7s-note2"></i>
-                        <p>Table List</p>
+                        <p>Education Articles</p>
                     </a>
                 </li>
                 <li>
                     <a href="typography.html">
                         <i class="pe-7s-news-paper"></i>
-                        <p>Typography</p>
+                        <p>About Us</p>
                     </a>
                 </li>
                 <li>
                     <a href="icons.html">
                         <i class="pe-7s-science"></i>
-                        <p>Icons</p>
+                        <p>How To Tutorial</p>
                     </a>
                 </li>
+                <!--
                 <li>
                     <a href="maps.html">
                         <i class="pe-7s-map-marker"></i>
                         <p>Maps</p>
                     </a>
                 </li>
+                -->
                 <li>
                     <a href="notifications.html">
                         <i class="pe-7s-bell"></i>
@@ -99,7 +100,7 @@
 				<li class="active-pro">
                     <a href="upgrade.html">
                         <i class="pe-7s-rocket"></i>
-                        <p>Upgrade to PRO</p>
+                        <p>Support Us</p>
                     </a>
                 </li>
             </ul>
@@ -116,7 +117,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
+                    <!--<a class="navbar-brand" href="#">Dashboard</a>-->
 <!-------------------------------------------------------------------------------  headers-->
                     <a class="navbar-brand" href="#">
                       <%= "Home"%>
@@ -164,7 +165,7 @@
                      <!--add if loged in user if not loged in login/signup-->
                      <li>
                      <a href="">
-                      <p><%= "Welcome   #{@user}" %></p>
+                      <p><%= "Welcome:   #{@user}" %></p>
                       </a>
                       </li>
                       <!--USER name + surename END----------------------------------------------------------------------------------------->
@@ -246,9 +247,10 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-4">
+ <!--PARENT WINDOW ----------------------------------------------------------------------->
+
+                    <div class="col-md-6">
                         <div class="card">
-<!--PARENT WINDOW EMAIL STATISTICS FIRST BIT OF CONTENT----------------------------------------------------------------------->
 
                    
                 <%= link_to({:controller => 'parents', :action => 'index'}) do %>
@@ -261,17 +263,18 @@
                        
           
                             <div class="content">
-                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
+                                <!--content space-->
+                               <!-- <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>-->
 
                                 <div class="footer">
                                     <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Bounce
-                                        <i class="fa fa-circle text-warning"></i> Unsubscribe
+                                        <i class="fa fa-circle text-info"></i> Click
+                                        <i class="fa fa-circle text-danger"></i> Where Text
+                                        <i class="fa fa-circle text-warning"></i> Disappear
                                     </div>
                                     <hr>
                                     <div class="stats">
-                                        <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
+                                        <i class="fa fa-clock-o"></i> Total Analysis of Marks
                                     </div>
                                 </div>
                             </div>
@@ -281,7 +284,7 @@
       <!--PARENT WINDOW  END ------------------------------------------------------------------------------------------------------------>
       
 <!--TEACHER WINDOW  ----------------------------------------------------------------------------------------> 
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <div class="card">
  
                              <%= link_to({:controller => 'students', :action => 'index'}) do%>
@@ -290,16 +293,17 @@
                                 <p class="category">Mark your student</p>
                             </div>
                             <div class="content">
-                                <div id="chartHours" class="ct-chart"></div>
+                                <!--content space-->
+                                <!--<div id="chartHours" class="ct-chart"></div>-->
                                 <div class="footer">
                                     <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Click
-                                        <i class="fa fa-circle text-warning"></i> Click Second Time
+                                        <i class="fa fa-circle text-info"></i> Click
+                                        <i class="fa fa-circle text-danger"></i> Where Text
+                                        <i class="fa fa-circle text-warning"></i> Disappear
                                     </div>
                                     <hr>
                                     <div class="stats">
-                                        <i class="fa fa-history"></i> Updated 3 minutes ago
+                                        <i class="fa fa-history"></i> Total Analysis of Marks
                                     </div>
                                 </div>
                             </div>
@@ -310,34 +314,40 @@
 
 <!--END TEACHER WINDOW  STATISTICS FIRST BIT OF CONTENT---------------------------------------------------------------------------------------->  
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="card ">
                             <div class="header">
-                                <h4 class="title">2014 Sales</h4>
-                                <p class="category">All products including Taxes</p>
+                                <h4 class="title">How To Tutorial</h4>
+                                <p class="category">Not Sure How to Use EJornal?</p>
                             </div>
                             <div class="content">
-                                <div id="chartActivity" class="ct-chart"></div>
+                                <!--<div id="chartActivity" class="ct-chart"></div>-->
+                                <div class="youtube">
+												                            <iframe width="auto" height="auto" src="https://www.youtube.com/embed/CElUxx-ZkkM">
+                                    </iframe>
+                                                    
+												</div>
 
                                 <div class="footer">
                                     <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Tesla Model S
-                                        <i class="fa fa-circle text-danger"></i> BMW 5 Series
+                                        <i class="fa fa-circle text-info"></i> We are Happy
+                                        <i class="fa fa-circle text-danger"></i> to Help You
                                     </div>
                                     <hr>
                                     <div class="stats">
-                                        <i class="fa fa-check"></i> Data information certified
+                                        <i class="fa fa-check"></i>Click Here
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-6">
+<!--END TEACHER WINDOW  STATISTICS FIRST BIT OF CONTENT---------------------------------------------------------------------------------------->  
+ 
+                    <div class="col-md-8">
                         <div class="card ">
                             <div class="header">
-                                <h4 class="title">Functions</h4>
-                                <p class="category">Evaluate/Observe a Student</p>
+                                <h4 class="title">Articles</h4>
+                                <p class="category">Education News/Articles</p>
                             </div>
                             <div class="content">
                                 <div class="table-full-width">
@@ -419,6 +429,7 @@
 						  							  	<label for="checkbox5"></label>
 					  						  		</div>
                                                 </td>
+                                              
                                                 <td>Read "Following makes Medium better"</td>
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
@@ -446,6 +457,7 @@
                                                     </button>
                                                 </td>
                                             </tr>
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -453,7 +465,7 @@
                                 <div class="footer">
                                     <hr>
                                     <div class="stats">
-                                        <i class="fa fa-history"></i> Updated 3 minutes ago
+                                        <i class="fa fa-history"></i> Educate Yourself
                                     </div>
                                 </div>
                             </div>
@@ -466,18 +478,10 @@
 
 
 
-<!--
 
-<html>
-<head>
-  <title>Home</title>
-
-  <%# stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%#javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%#csrf_meta_tags %>
-</head>
-<body>
--->
+<!--Debugging-->
+<%
+=begin %>
 <%="Welcome to eJournal" %>
 <br />
  <%= " ADD DIFFERENT PERMISSIONS FOR EACH USER. " %>
@@ -514,12 +518,10 @@
 <br/>
  <%= link_to 'New Result', new_result_path %>
 <%= yield %>
-
-<!--
-</body>
-</html>
-
 -->
+<% 
+=end %>
+
 
 
 
@@ -540,12 +542,12 @@
                         </li>
                         <li>
                             <a href="#">
-                                Portfolio
+                                About US
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                               Blog
+                               Notifications
                             </a>
                         </li>
                     </ul>
