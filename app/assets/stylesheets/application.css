@@ -26,6 +26,27 @@
 
  }*/
 
+
+
+a:hover { 
+  color: #7625ff;
+}
+a:active { 
+  color: #333333;
+}
+
+#search_icon{
+    margin-bottom:0.4%;
+}
+.purple{
+    color: #7625ff;
+}
+.image-buttons{
+   margin-left:50%; 
+}
+.hover div:hover{
+    background-color: #f2f2f2;
+}
  .youtube {
     float: none;
     clear: both;

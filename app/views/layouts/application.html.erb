@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+ 
 <html>
 <head>
   <title>Workspace</title>
@@ -9,7 +10,7 @@
 </head>
 <body>
   
-<!--                     
+ <!--                   
 <%#"Ruby code with output app"%>
 
 
@@ -32,21 +33,26 @@ Logged in as <%# current_user.email %>.
 
 <br/>
 <br/>
--->
+
+
      <div id="application_body">
-<%= link_to 'Home', root_path %> |
+<%# link_to 'Home', root_path %> |
 
-<% if current_user %>
-Logged in as <%= current_user.email %>.
-<%= link_to "Log Out", logout_path %>
-<% else %>
-<%= link_to "Sign Up", signup_path %> or
-<%= link_to "Log In", login_path %>
-<% end %>
+<%# if current_user %>
+Logged in as <%# current_user.email %>.
+<%# link_to "Log Out", logout_path %>
+<%# else %>
+<%# link_to "Sign Up", signup_path %> or
+<%# link_to "Log In", login_path %>
+<%# end %>
+      </div>
+      
 
 
-                                                   </div>
-<%= yield %>
-                                                                 
-</body>
+
+                                             
+
+   -->    
+   <%= yield %>
+      </body>
 </html>

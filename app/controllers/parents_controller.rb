@@ -6,8 +6,8 @@ class ParentsController < ApplicationController
 
 
 def lfilter
-    ##BUG fix the lfiter by email it is vital function
-  #add if the current user email matches the pfilter email the show (maybe in views)
+    ##fixed BUG fix the lfiter by email it is vital function
+  #add if the current user email matches the pfilter email the show (maybe in views) fixed!!!
     #st = params[:lfilter] (this does not work with emails for some reason)
     st ="%#{params[:lfilter]}%"
     #now compare that filter name with student

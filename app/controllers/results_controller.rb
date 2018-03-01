@@ -1,6 +1,6 @@
 class ResultsController < ApplicationController
  #granting and limmiting access for different methods  
- before_action :set_result, only: [:show, :edit, :update, :destroy], except: [:parent_result]
+ before_action :set_result, only: [:show, :edit, :update, :destroy], except: [:parent_result, :update, :edit, :destroy]
 
 #display results from newest to oldest = .order("created_at DESC").all
 #cannot add new result, maybe because all results of filters ar eon 1 page .order("created_at DESC").all
@@ -38,6 +38,20 @@ class ResultsController < ApplicationController
   end
 
 def parent_result
+  #results for parents. Here is simplified because there was no need for extra steps like in index
+  @URI = request.original_url
+  #split the URI to get everything after the / sign
+  @URI = @URI.split('/').last
+  @URI = @URI.to_s
+  st=@URI
+  #searching the DB to match all the results of a student with the unique email and displaying newst first
+   @results= Result.order("created_at DESC").where("email like ? ",st)
+  
+  
+  #try change to just @resilts and to = Result.where("email like ? ",st)
+    @resultsChart= Result.where("email like ? ",st)
+end
+def teacher_result
   #results for parents. Here is simplified because there was no need for extra steps like in index
   @URI = request.original_url
   #split the URI to get everything after the / sign
