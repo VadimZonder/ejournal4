@@ -37,7 +37,7 @@ gem 'groupdate', '~> 3.2.0'
 gem 'active_median', '~> 0.1.0'
 #________________________________
 
-
+gem 'google-cloud-language'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

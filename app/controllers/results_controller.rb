@@ -29,6 +29,8 @@ class ResultsController < ApplicationController
     
     #try change to just @resilts and to = Result.where("email like ? ",st)
     @resultsChart= Result.where("email like ? ",st)
+    
+    @behaviour= Result.where("email like ? ",st) #, params[:behaviour]
 
   end
   
@@ -78,6 +80,7 @@ end
 
   # GET /results/1/edit
   def edit
+    @result = Result.find(params[:id])
   end
 
   # POST /results
@@ -99,6 +102,7 @@ end
   # PATCH/PUT /results/1
   # PATCH/PUT /results/1.json
   def update
+      @result = Result.find(params[:id])
     respond_to do |format|
       if @result.update(result_params)
         format.html { redirect_to @result, notice: 'Result was successfully updated.' }
@@ -113,6 +117,7 @@ end
   # DELETE /results/1
   # DELETE /results/1.json
   def destroy
+      @result = Result.find(params[:id])
     @result.destroy
     respond_to do |format|
       format.html { redirect_to results_url, notice: 'Result was successfully destroyed.' }
@@ -128,6 +133,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def result_params
-      params.require(:result).permit(:date_time, :classes, :teacher, :grade, :email, :parent_email, :comment)
+      params.require(:result).permit(:date_time, :classes, :teacher, :grade, :email, :parent_email, :behaviour, :comment)
     end
 end

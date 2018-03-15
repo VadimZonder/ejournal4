@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180222123707) do
+ActiveRecord::Schema.define(version: 20180301114712) do
 
   create_table "filters", force: :cascade do |t|
     t.string   "filter"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20180222123707) do
     t.integer  "grade"
     t.string   "email"
     t.string   "parent_email"
+    t.integer  "behaviour"
     t.string   "comment"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false

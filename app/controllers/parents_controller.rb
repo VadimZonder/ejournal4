@@ -122,6 +122,8 @@ def index
 
 
 end
+
+
 #(if from browser /login is called)
 def login
 @parent = "Sing in"

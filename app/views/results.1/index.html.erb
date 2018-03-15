@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Results for Teachers take email from URI for student and send when result is added (like you did see controller)</h1>
+<h1>Listing Results</h1>
 
+  <% if @results.length == 0 %>
+
+<h2>There are no resutls yet posted</h2>
+<% else %>
 <table>
   <thead>
     <tr>
@@ -9,7 +13,8 @@
       <th>Classes</th>
       <th>Teacher</th>
       <th>Grade</th>
-      <th>Email</th>
+      <th>Emal</th>
+      <th>Parent email</th>
       <th>Comment</th>
       <th colspan="3"></th>
     </tr>
@@ -22,8 +27,8 @@
         <td><%= result.classes %></td>
         <td><%= result.teacher %></td>
         <td><%= result.grade %></td>
-        <td><%= result.email %><%= link_to("Results", {:controller => 'results', :action => 'index', :id =>  result.email}) %>
-</td>
+        <td><%= result.email %><%= link_to("Results", {:controller => 'results', :action => 'index', :id =>  result.email}) %></td>
+        <td><%= result.parent_email %></td>
         <td><%= result.comment %></td>
         <td><%= link_to 'Show', result %></td>
         <td><%= link_to 'Edit', edit_result_path(result) %></td>
@@ -36,4 +41,4 @@
 <br>
 
 <%= link_to 'New Result', new_result_path %>
-
+<% end %>

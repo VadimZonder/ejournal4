@@ -7,6 +7,7 @@ class CreateResults < ActiveRecord::Migration
       t.integer :grade
       t.string :email
       t.string :parent_email
+      t.integer :behaviour
       t.string :comment
 
       t.timestamps null: false

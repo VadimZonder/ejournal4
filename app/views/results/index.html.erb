@@ -29,6 +29,7 @@
         <td><%= result.grade %></td>
         <td><%= result.email %><%= link_to("Results", {:controller => 'results', :action => 'index', :id =>  result.email}) %></td>
         <td><%= result.parent_email %></td>
+         <td><%= result.behaviour %></td>
         <td><%= result.comment %></td>
         <td><%= link_to 'Show', result %></td>
         <td><%= link_to 'Edit', edit_result_path(result) %></td>

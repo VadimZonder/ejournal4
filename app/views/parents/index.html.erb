@@ -69,7 +69,7 @@
 <%#if (@students.length == 0 || @lfilters.length == 0) || (@students.length == 0 || @lfilters.length != 0) %>
 
 <%#here I am checking if 1. No students or filters are made = error 2. or there are filters but no students = error. note made elsif for the second so that erros can be more specific%>
-<%if (@students.length == 0 || @lfilters.length == 0) || (@students.length == 0 || @lfilters.length != 0) %>
+<%if (@students.length == 0 || @lfilters.length == 0) || (@students.length == 0 && @lfilters.length != 0) %>
                 <div class="col-md-12">
                         <div class="card card-plain">
                             <div class="header">

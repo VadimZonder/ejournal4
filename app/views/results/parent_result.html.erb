@@ -12,11 +12,6 @@
 !!!!!!!!!!!!!!!RUN THIS ONLY IF TESULTS ARE NOT EMPTY ALL VIEWS MUST HAVE WHERE THEY REQUEST/GET FROM DB IN CONTROLLER @var.each index GET not posts-->
 <!-- Dublicate helpfull graphs 1 to show the lates results and the other the average make +1 to sho trends in time-->
 
-<%# make divs stack upon one another%>
-<div class="content">
-            <div class="container-fluid">
-              <h2 class="title">Listing Results for Parents</h2>
-                 <h5 class="category"><%= link_to 'Add A New Result', new_result_path %></h5>
 
 <div class="row">
   <div class="col-xs-6">
@@ -26,7 +21,6 @@
 
 
 </div>
-
 <%# table average%>
 <div class="row">
   <div class="col-xs-6">
@@ -38,13 +32,13 @@
 </div>
 </div>
 <!-- Line Chart - Multiple Series -->
-
+<br>
   <div class="col-xs-12">
-    <h3>Trends Table</h3>
+    <h3>Grades Trends Table</h3>
     <%# line_chart data,min: 1, max: 5000%>
     <%# line_chart   Result.pluck("classes").uniq.map { |c| { name: c, data: @resultsChart.where(classes: c).group_by_day(:updated_at, format: "%B %d, %Y").count }  }, discrete: true %>
     <%# line_chart  Result.pluck("classes").uniq.map { |c| { name: c, data: @resultsChart.where(classes: c).group(:created_at).sum(:grade) } }, discrete: true%>
-    <%= line_chart Result.group(:classes).group(:created_at).sum(:grade)%>
+    <%= line_chart Result.group(:classes).group(:updated_at).sum(:grade),legend: true,  legend: "top"%>
 </div>
 
 <br>
@@ -55,11 +49,153 @@
 <%# line_chart Result.group(:classes).group_by_day(:created_at).sum(:grade)%>
 
 
+<div class="row">
+  <div class="col-xs-6">
+      <br><br><br><br><br></br>
+    <h3>Total Averages of Student's Behaviour per Subjects</h3>
+<%= column_chart Result.group(:classes).average("behaviour"),min: 1, max: 10 %>
 
 
+
+</div>
+<br>
+<%# table average%>
+<div class="row">
+  <div class="col-xs-6">
+      <br><br><br><br><br></br>
+    <h3>Total Behaviour Averages in Pie</h3>
+    <%#pie_chart Result.group(:classes).sum(:grade) %>
+   <%=  pie_chart Result.group(:classes).average("behaviour")  %>
+  </div>
+</div>
+</div>
+</div>
+<!-- Line Chart - Multiple Series -->
+<br>
+  <div class="col-xs-12">
+    <h3>Behaviour Trends Table</h3>
+    <%# line_chart data,min: 1, max: 5000%>
+    <%# line_chart   Result.pluck("classes").uniq.map { |c| { name: c, data: @resultsChart.where(classes: c).group_by_day(:updated_at, format: "%B %d, %Y").count }  }, discrete: true %>
+    <%# line_chart  Result.pluck("classes").uniq.map { |c| { name: c, data: @resultsChart.where(classes: c).group(:created_at).sum(:grade) } }, discrete: true%>
+    <%= line_chart Result.group(:classes).group(:updated_at).sum(:behaviour),min: 1, max: 10 %>
+</div>
+
+<br>
+
+<!-- experiment------------------------------------------------------------------------------------------------------------------------------------------------->
+ <%# table of all the results for a particular student%>
+<% if @results.length == 0 %>
+                        <div class="col-md-12">
+                        <div class="card card-plain">
+                            <div class="header">
+                                <h3 class="title">No behaviour results</h3>
+                               
+                                
+                            </div>
+                            </div>
+                            </div>
+<% else %>
+
+  <!--  
+   <tbody class="table-hover">
+<tr>
+</tr>
+</tbody>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Filter Table</h4>
+                                <p class="category">This table is filtered by the surname or email</p>
+                                   <p class="category">Behaviour 1-10 (1 = worst | 10 = best)</p>
+                             
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+
+
+
+  <thead>
+    <tr>
+      <th>Behaviour</th>
+  <% negativeCounter = 0 %>
+  <% positiveCounter = 0 %>
+    </tr>
+  </thead>
+
+  <tbody>
+      <!-- make a note that the teacher will only add a comment on bhaviour and not marks, marks are expressed in marks -->
+    <% @results.each do |result| %>
+ <!--       <tr>
+          <!-- first make downcase so that no repetition-->
+        <!-- double negative first so that we get rid of the longest substrings first-->
+         <%  if result.comment.downcase().include? ("not a bad student") || result.comment.downcase().include?("not inappropriate") || 
+        result.comment.downcase().include?("not misbehaving") ||  result.comment.downcase().include?("not messing") ||  
+        result.comment.downcase().include?("not desrupting") ||  result.comment.downcase().include?("not disrepecting") %>
+           <% positiveCounter+=1 %>
+  <!--          <td><%# result.comment %><p><%# "result of the positive counter #{positiveCounter}" %></p></td>
+        <!-- then negatives with "not" sicne they are longer-->
+        <%  elsif result.comment.downcase().include?("not good") ||  result.comment.downcase().include?("not a good") ||  
+        result.comment.downcase().include?("not behaving") ||  result.comment.downcase().include?("bad student") ||  
+        result.comment.downcase().include?("not a strong") ||  result.comment.downcase().include?("not well") ||  
+        result.comment.downcase().include?("bad") ||  result.comment.downcase().include?("poor") || result.comment.downcase().include?("inappropriate") ||  
+        result.comment.downcase().include?("disrespectful") || result.comment.downcase().include?("misbehaving") ||  result.comment.downcase().include?("misbehave") || 
+        result.comment.downcase().include?("problematic") ||
+        result.comment.downcase().include?("harmful") ||  result.comment.downcase().include?("not a hard working")  %>
+           <% negativeCounter+=1 %>
+  <!--          <td><%#result.comment %><p><%# "result of the negativecounter #{negativeCounter}" %></p></td>
+        <!-- try adding all nots-->
+        <%  elsif result.comment.downcase().include?("good") ||  result.comment.downcase().include?("well") ||  
+        result.comment.downcase().include?("great") ||  result.comment.downcase().include?("excellent") ||  
+        result.comment.downcase().include?("strong") ||  result.comment.downcase().include?("hard working") ||  
+        result.comment.downcase().include?("determined") ||  result.comment.downcase().include?("amazing") ||  
+        result.comment.downcase().include?("enthusiastic")  ||  result.comment.downcase().include?("best")  ||  
+        result.comment.downcase().include?("outstanding")  ||  result.comment.downcase().include?("gentleman") ||  
+        result.comment.downcase().include?("kind") ||  result.comment.downcase().include?("enjoyable") %>
+           <% positiveCounter+=1 %>
+   <!--         <td><%# result.comment %><p><%# "result of the positive counter #{positiveCounter}" %></p></td>
+        
+           <%  else %>
+             <td><%#result.comment %></td>
+   <%  end %>
+      </tr>
+         
+          
+    <% end %>
+  </tbody>
+</table>
+-->
+<% end %>
+
+</div>
+</div>
+</div> 
+
+<div class="row">
+  <div class="col-xs-6">
+      <br><br><br><br><br></br>
+    <h3>Total Number of All The Positive VS Negative Comments</h3>
+        <%= column_chart [["Positive Comments", positiveCounter], ["Negative Comments", negativeCounter]] %>
+</div>
+
+<div class="row">
+  <div class="col-xs-6">
+      <br><br><br><br><br></br>
+    <h3>Total Number of All The Positive VS Negative Comments in Pie</h3>
+        <%= pie_chart [["Positive Comments", positiveCounter], ["Negative Comments", negativeCounter]] %>
+  </div>
+</div>
+</div>
+</div>
+
+
+  
+<!--   <p><%#"_____________Begaviour:   #{@behaviour}" %></p> experiment------------------------------------------------------------------------------------------------------------------------------------------------->
 <!-------------------------------------------------------------------------------  Filters TABLE BEGIN------------------>      
  
- 
+<br><br><br>
  <%# table of all the results for a particular student%>
 <% if @results.length == 0 %>
                         <div class="col-md-12">
@@ -82,10 +218,12 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
+                        <br><br><br><br><br></br>
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">Filter Table</h4>
                                 <p class="category">This table is filtered by the surname or email</p>
+                                   <p class="category">Behaviour 1-10 (1 = worst | 10 = best)</p>
                              
                             </div>
                             <div class="content table-responsive table-full-width">
@@ -103,6 +241,7 @@
       <th>Student's Email</th>
       <th>Parent's Email</th>
       -->
+      <th>Behaviour</th>
       <th>Comment</th>
     </tr>
   </thead>
@@ -118,6 +257,8 @@
         <td><%# result.email %></td>
         <td><%# result.parent_email %></td>
         -->
+        <td><%= result.behaviour %></td>
+        <td><%= result.comment %></td>
       </tr>
     <% end %>
   </tbody>
@@ -127,6 +268,9 @@
 </div>
 </div>
 </div>    
+
+
+
 
 
   </div>

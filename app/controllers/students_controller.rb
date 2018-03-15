@@ -17,7 +17,7 @@ class StudentsController < ApplicationController
    @date = Time.now.strftime("%e")
    ###uncomment at the end
   #http_basic_authenticate_with :name => "@user", :password => @date + "12345"
-
+  
 
 def search
   @search_term = params[:q]
