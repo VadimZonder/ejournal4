@@ -23,6 +23,7 @@ def lfilter
 end
 
 def parent_result
+
     @results= Result.all
     #get the current URI once on this page
     @URI = request.original_url
@@ -40,6 +41,8 @@ def parent_result
     st=@splitEmailF.to_s+@at.to_s+@splitEmailL.to_s
     #searching the DB to match all the results of a student with the unique email
     @results= Result.where("email like ? ",st)    
+    
+  
 end
    def parent_search
   @search_term = params[:q]
@@ -116,9 +119,13 @@ def index
     ##Here we personalise filters so that each user will have their own unique filter
     #displaying currnet user
     #the @vars are now available in views
-    @user = current_user.email
+    
+    #user to be accessable on all of the pages
+    @user = current_user
+    #user_email for search purposes
+    @user_email = current_user.email
     #display the pfilters with the current user
-    @lfilters= Lfilter.where("email like ? ", @user)  
+    @lfilters= Lfilter.where("email like ? ", @user_email)  
 
 
 end
@@ -139,6 +146,8 @@ end
 def loggedout
 @parent = "I am a singed out"
 end
+
+
 
  private
     # Use callbacks to share common setup or constraints between actions.

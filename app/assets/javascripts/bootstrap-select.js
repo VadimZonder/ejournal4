@@ -1,3 +1,17 @@
+/*
+  *This is an opensource Bootstrap-select is a plugin that helps to turn standard bootstrap alerts into "growl" like notifications.
+  *This code is taken from: https://www.creative-tim.com/product/light-bootstrap-dashboard#_=_   
+    
+
+     Creative Tim Modifications
+     
+     Lines: 239, 240 was changed from top: 5px to top: 50% and we added margin-top: -13px. In this way the close button will be aligned vertically 
+     Line:242 - modified when the icon is set, we add the class "alert-with-icon", so there will be enough space for the icon.
+
+
+
+
+*/
 !function($) {
     var Selectpicker = function(element, options, e) {
         if (e ) {

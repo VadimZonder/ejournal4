@@ -9,7 +9,7 @@
 
     -->
 
-    	<div class="sidebar-wrapper" >
+    	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="https://www.linkedin.com/in/vadim-malakhovski/" class="simple-text">
                     EJournal
@@ -72,8 +72,8 @@
     	</div>
     </div>
 
-    <div class="main-panel ">
-        <nav class="navbar navbar-default navbar-fixed ">
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
@@ -86,15 +86,16 @@
 <!-------------------------------------------------------------------------------  headers-->
                     <!--going back-->
                     <a class="navbar-brand" href="../">
-                      <%="Home" %>
-                    <% link_to "Home", root_path%>
+                      <%= "Home"%>
+                    <% link_to "Home", root_path  %>
                     </a>
  <!-------------------------------------------------------------------------------  END  headers-->                
                  
                      <a class="navbar-brand" href="#">
                 </div>
                 <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
+                   <!--  <ul class="nav navbar-nav navbar-left">
+                       
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-dashboard"></i>
@@ -124,19 +125,19 @@
 								<p class="hidden-lg hidden-md">Search</p>
                             </a>
                         </li>
-                    </ul>
-                
-                   <ul class="nav navbar-nav navbar-right">
-                     <% if current_user %>  
+                    </ul> -->
+                    <ul class="nav navbar-nav navbar-right">
+                     
                      <!--USER name + surename ----------------------------------------------------------------------------------------->
                      <!--add if loged in user if not loged in login/signup-->
-                     <li>
-                     
-                     <%#displaying current user and once clicked redirecting to editing that user%>
-                         <%= link_to "Welcome:   #{@user}", "https://ejournal-reloaded-vadimmalakhovski.c9users.io/users/#{current_user.id}/edit" %>  <!--fix, this will be displayed on most of the pages so need in controllers , edit_user_path(@user) -->
-               
                     
-                      </li>
+                       
+                        <li>
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+								<p class="hidden-lg hidden-md"><%= "Welcome:   #{@user}" %></p>
+                            </a>
+                        </li>
                
                       <!--USER name + surename END----------------------------------------------------------------------------------------->
                       
@@ -167,8 +168,7 @@
                         <li>
                         -->
                          
-                          
-                     
+                               <% if current_user %>
                        
                          <li>  
                             <a href="logout">
@@ -179,30 +179,78 @@
                 </li> 
           <% else %> 
          
-               <li>  
+              
+                 <!--<a href="signup"> -->
+                   
+
+
+
+ <li>  
                  <li> 
-                     <a href="signup"> 
-                 
+ <a  data-toggle="collapse" href="#collapseRegister" aria-expanded="false" aria-controls="collapseRegister">
                       <%="Register"%>
                       <% link_to 'Register', signup_path %>
                       </a>
+                      
+
+
+                      <%# render 'form' %>
+
+<%# link_to 'Back', users_path %>
                       </li> 
                       
+
+
                       <li> 
                       <a>or</a>
                       </li> 
                         
-                          <li> 
-                    <a href="login">  
-                    
-                     <%="Login"%>
-                     <%link_to 'Login', login_path %>
+                          <li>
+                                      <script> 
+        if (window.matchMedia("(min-width: 990px)").matches) {
+            <% width = true %>
+            /*
+            document.getElementById("myWidth").style.maxWidth = "10px"; 
+            
+            document.getElementById("width").setAttribute("href", "#collapseSign");
+            document.getElementById("width").setAttribute("data-toggle", "collapse");
+            document.getElementById("width").setAttribute("aria-expanded", "false");
+            document.getElementById("width").setAttribute("aria-controls", "collapseSign"); *?
+            <%# if @results.length == 0 %>
+/*  990+ px wide */ 
+} 
+else {
+/* 990- px wide */ 
+<% width = false %>
+document.getElementById("collapseRegister").style.position = "absolute";
+document.getElementById("collapseRegister").style.zIndex = "5";
+document.getElementById("collapseRegister").style.marginLeft = "320px";
+
+ document.getElementById("collapseSign").style.position = "absolute";
+document.getElementById("collapseSign").style.zIndex = "5";
+document.getElementById("collapseSign").style.marginLeft = "320px";
+/*
+ document.getElementById("width").setAttribute("href", "login");
+ */
+} </script> 
+
+
+  <% if width == true%>
+
+  <% elsif width == false %>
+
+ 
+  <%end%>
+                    <!--<a href="login">  -->
+                   <a  data-toggle="collapse"  href="#collapseSign" aria-expanded="false" aria-controls="collapseSign">
+                    <%="Sign In"%>
+                     <%link_to 'Sign in', login_path %>
                      </a>
+
                       </li>   
                    </li>  
               
-           
-         
+          
                  
           <% end %>
 
@@ -217,7 +265,141 @@
             </div>
         </nav>
 
+
+  <!--register expand div  try changin z index + displaying in the middle of the page over all the content-->      
+ <div class="collapse" id="collapseRegister" style="float:right" >
+  <div class="card card-body" >
+      
+      <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card card-plain">
+                            <div class="header">
+                                <h4 class="title">Registration</h4>
+                                </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover">
+                                  
+                              <tbody> 
+
+   
+
+                                    <%= form_for User.new do |f| %>
+  <% if User.new.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+     <div class="field">
+     <tr>
+<th> <p><%= link_to("Back", {:controller => 'parents', :action => 'index'}) %></p></th>
+</tr> 
+  </div> 
+
+</tbody> 
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                                 </div>
+                        </div>
+                    </div>
+      
+      
+      
   
+    </div>
+</div>  
+
+
+ <!--sign in expand div-->      
+ <div class="collapse" id="collapseSign" style="float:right">
+  <div class="card card-body">
+      
+      <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card card-plain">
+                            <div class="header">
+                                <h4 class="title">Sign-In</h4>
+                                </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover">
+                                  
+                              <tbody> 
+
+<%= form_tag sessions_path do %>
+<div class="field">
+<%= label_tag :email %><br>
+<%= text_field_tag :email %>
+</div>
+  <div class="field">
+    <%= label_tag :password %><br>
+<%= password_field_tag :password %>
+</div>
+  <div class="actions">
+    <%= submit_tag "Log In" %>
+</div>
+<% end %>
+   
+
+     <div class="field">
+     <tr>
+<th> <p><%= link_to("Back", {:controller => 'parents', :action => 'index'}) %></p></th>
+</tr> 
+  </div> 
+
+</tbody> 
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                                 </div>
+                        </div>
+                    </div>
+      
+      
+      
+  
+    </div>
+</div>            
 <!--
 <p>
   <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">

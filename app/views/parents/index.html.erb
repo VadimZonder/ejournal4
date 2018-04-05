@@ -1,3 +1,4 @@
+<!-- filters for parents displayed in parents dahsboard-->
 <!doctype html>
 <html lang="en">
 <head>
@@ -50,8 +51,8 @@
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">Filter Table</h4>
-                                <p class="category">This table is filtered by the surname or email</p>
-                                <p><%= link_to 'Add a Student Filter', new_lfilter_path %> </p>
+                                <p class="category">This table is filtered by the surname or email</p><br>
+                                <p><%= link_to 'Add a Student Filter', new_lfilter_path , class: "btn purple-button" %> </p>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
@@ -126,15 +127,15 @@
                         <div class="card card-plain">
                             <div class="header">
                                 <h4 class="title">Filter Results</h4>
-                                <p class="category">This table is the results of the filters</p>
-                                <p><%= link_to 'Add a Student Filter', new_lfilter_path %> </p>
+                                <p class="category">This table is the results of the filters</p><br>
+                                <p><%= link_to 'Add a Student Filter', new_lfilter_path, class: "btn purple-button"  %> </p>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
                                           <th>Surname/Email</th>
                                           <!--<th>User's Email(delete)</th>-->
-                                          <th class="text-left">Show/Edit/Delete</th>
+                                          <th class="text-left">Edit/Delete</th>
                                     </thead>
                                      
  <!--ROW 1 -->
@@ -161,7 +162,7 @@
                                             <td><a href="/lfilter/<%= lfilter.lfilter %>"><%= lfilter.lfilter %></a></td>
                                            <!-- <td><%# lfilter.email %></td>-->
                                             <td><% if user_signed_in? %>
-                                                    <%= link_to 'Show', lfilter %> /
+                                                    <%# link_to 'Show', lfilter %> 
                                                     <%= link_to 'Edit', edit_lfilter_path(lfilter) %> /
                                                     <%= link_to 'Delete', lfilter, method: :delete, data: { confirm: 'Are you sure?' } %>
                                                 <%else%>

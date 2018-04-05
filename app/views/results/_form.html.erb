@@ -1,3 +1,18 @@
+ <%= render 'layouts/header' %>
+
+ <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card card-plain">
+                            <div class="header">
+                                <h4 class="title">Create A Result</h4>
+                                <p class="category">Teachers Only</p>
+                                </div>
+                            <div class="content table-responsive table-full-width">
+                              
+ <% @result=Result.new %>
+<%# form_for(@result) do |f| %>                              
 <%= form_for(@result) do |f| %>
   <% if @result.errors.any? %>
     <div id="error_explanation">
@@ -48,6 +63,23 @@
     <%= f.text_field :comment %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create Result', class: "btn purple-button" %>
   </div>
 <% end %>
+
+
+     <div class="field">
+     <tr>
+<th> <p><%= link_to("Back", {:controller => 'students', :action => 'index'}) %></p></th>
+</tr> 
+  </div> 
+
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                                 </div>
+                        </div>
+                    </div>
+ <%= render 'layouts/footer' %>

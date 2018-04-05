@@ -1,5 +1,8 @@
 /*!
 
+ * This is a opensource javascript template
+ * the code is taken from:
+
  =========================================================
  * Light Bootstrap Dashboard - v1.4.0
  =========================================================

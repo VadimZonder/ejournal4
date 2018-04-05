@@ -22,7 +22,7 @@
                                     <thead>
                                           <!--<th>School/Surname/Email</th>-->
                                           <th>Filter by</th>
-                                          <th class="text-left">Show/Edit/Delete</th>
+                                          <th class="text-left">Edit/Delete</th>
                                     </thead>
                                     
 
@@ -50,7 +50,7 @@
                                  <% @lfilters.each do |lfilter| %>
       <tr>
         <td><%= lfilter.lfilter %></td>
-        <td><%= link_to 'Show', lfilter %>/<%= link_to 'Edit', edit_lfilter_path(lfilter) %>/<%= link_to 'Destroy', lfilter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', lfilter, method: :delete, data: { confirm: 'Are you sure?' } %></td> <!-- do not need the show <%# link_to 'Show', lfilter %>/<%= link_to 'Edit', edit_lfilter_path(lfilter) %>/-->
       </tr>
 
 

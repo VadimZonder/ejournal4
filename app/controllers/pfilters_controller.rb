@@ -7,9 +7,10 @@ class PfiltersController < ApplicationController
     #@pfilters = Pfilter.all
     ##Here we personalise filters so that each user will have their own unique filter
     #displaying currnet user
-    @user = current_user.email
+    @user = current_user
+    @user_email = current_user.email
     #display the pfilters with the current user
-    @pfilters= Pfilter.where("email like ? ", @user) 
+    @pfilters= Pfilter.where("email like ? ", @user_email) 
   end
 
   # GET /pfilters/1

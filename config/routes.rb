@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  
+ get '/users/:id/edit' => 'users#edit' 
+ 
+
+#form on the home page for device
+#post ':controller(/:action(/:id(.:format)))'
+#get ':controller(/:action(/:id(.:format)))'
+
+
   resources :results
   resources :static_pages
   get "table.html", to: "static_pages#table"
@@ -44,13 +51,16 @@ end
 devise_for :users do 
     resources:students
 end  
+devise_for :users do 
+    resources:static_pages
+end 
+
+
 
 resources :items
 resources :results
 resources :students
-resources :students do 
-  resources :results 
-end 
+
 
 
   #if path/path is ran or requested => do the following
@@ -74,31 +84,18 @@ end
 
 
   resources :users
-  get 'sessions/new'
+  
 
-  get 'sessions/create'
 
-  get 'sessions/destroy'
-
-  get 'sessions/new'
-
-  get 'sessions/create'
-
-  get 'sessions/destroy'
-
-  get 'sessions/new'
-
-  get 'sessions/create'
-
-  get 'sessions/destroy'
-
+ 
 
   
   resources :sessions, only: [:new, :create, :destroy]
   get 'signup', to: 'users#new', as: 'signup'
-  get 'login', to: 'sessions#new', as: 'login'
+  get 'login', to: 'sessions#create', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'page/index'
+  get 'sessions', to: 'sessions#new'
     # You can have the root of your site routed with "root"
   #ROOT PAGE IS THE STATI_COTROLLER'S INDEX METHOD WHICH WILL BE RENDERED IN VIEWS
   # root 'static_pages#index'

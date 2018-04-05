@@ -1,4 +1,6 @@
 /*
+ * This is a opensource javascript chart library
+ * the code is taken from:
  Highcharts JS v6.0.7 (2018-02-16)
 
  (c) 2009-2016 Torstein Honsi

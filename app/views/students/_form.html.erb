@@ -1,3 +1,16 @@
+ <%= render 'layouts/header' %>
+
+ <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card card-plain">
+                            <div class="header">
+                                <h4 class="title">Create A New Student</h4>
+                                <p class="category">Teachers Only</p>
+                                </div>
+                            <div class="content table-responsive table-full-width">
+
 <%= form_for(@student) do |f| %>
   <% if @student.errors.any? %>
     <div id="error_explanation">
@@ -36,14 +49,30 @@
     <%= f.text_field :school %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label :email,"Student's Email" %><br>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :comment %><br>
+    <%= f.label :comment,"General Comment (Optional)" %><br>
     <%= f.text_field :comment %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create', class: "btn purple-button"%>
   </div>
 <% end %>
+
+     <div class="field">
+     <tr>
+<th> <p><%= link_to("Back", {:controller => 'students', :action => 'index'}) %></p></th>
+</tr> 
+  </div> 
+
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                                 </div>
+                        </div>
+                    </div>
+ <%= render 'layouts/footer' %>

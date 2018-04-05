@@ -47,8 +47,8 @@
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">Filter Table</h4>
-                                <p class="category">This table is filtered by the school,surname or email</p>
-                                <p><%= link_to 'Add a Student Filter', new_pfilter_path %> </p>
+                                <p class="category">This table is filtered by the school,surname or email</p><br>
+                                <p><%= link_to 'Add a Student Filter', new_pfilter_path, class: "btn purple-button" %> </p>
                                      <p style="margin-bottom:1.5%;"><%= render 'layouts/search' %></p>
 
                             </div>
@@ -56,19 +56,20 @@
                                 <table class="table table-hover table-striped">
                                     <thead>
                                           <!--<th>School/Surname/Email</th>-->
-                                          <th>User's Email(delete)</th>
-                                          <th class="text-left">Show/Edit/Delete</th>
+                                          <th>Filter Keywords</th>
+                                          <th class="text-left">Edit/Delete</th>
                                     </thead>
                                      
  <!--ROW 1 -->
 <!-- check if the code below works. if deleting the table all works so the prob is in the tble / the prob is that for sure the lfilters themselves is more than 0-->
 <!-- check for 0 filters -->
+<!-- !!!!!Some of th eheaders need to be rendered before the chekc so that the code does no repeat -->
 <% if @pfilters.length == 0 %>
                         <div class="col-md-12">
                         <div class="card card-plain">
                             <div class="header">
-                                <h3 class="title">There are no matches in this filter (add a filter first to see resutls if student exist in the database)</h3>
-                                <p><%= link_to 'Add a Student Filter', new_pfilter_path %> </p>
+                                <h3 class="title">There are no matches in this filter (add a filter first to see resutls if student exist in the database)</h3><br>
+                                <p><%= link_to 'Add a Student Filter', new_pfilter_path, class: "btn purple-button" %> </p>
                             </div>
                             </div>
                             </div>
@@ -85,7 +86,7 @@
                                             <td><a href="/pfilter/<%= pfilter.pfilter %>"><%= pfilter.pfilter %></a></td>
                                             <!--<td><%# pfilter.email %></td>-->
                                             <td><% if user_signed_in? %>
-                                                    <%= link_to 'Show', pfilter %> /
+                                                    <%#link_to 'Show', pfilter %> 
                                                     <%= link_to 'Edit', edit_pfilter_path(pfilter) %> /
                                                     <%= link_to 'Delete', pfilter, method: :delete, data: { confirm: 'Are you sure?' } %>
                                                 <%else%>
@@ -113,8 +114,8 @@
                         <div class="card card-plain">
                             <div class="header">
                                 <h4 class="title">ALL Students By Filters Table</h4>
-                                <p class="category">Evaluate Your Student </p>
-                                <p class="category"><%= link_to ' ADD New Student', new_student_path %></p>
+                                <p class="category">Evaluate Your Student </p><br>
+                                <p class="category"><%= link_to ' ADD a New Student', new_student_path, class: "btn purple-button" %></p>
                                 
                             </div>
                             <div class="content table-responsive table-full-width">
@@ -139,7 +140,7 @@
                         <div class="card card-plain">
                             <div class="header">
                                 <h3 class="title">There are no resutls for the student/s you are looking for by what you are filtering (the student or/and the filter does not exist yet). Add a filter first and if same message appears then add a student)</h3>
-                                <p><%= link_to ' ADD New Student', new_student_path %> </p>
+                                <br><p><%= link_to ' ADD a New Student', new_student_path, class: "btn purple-button" %> </p>
                             </div>
                             </div>
                             </div>

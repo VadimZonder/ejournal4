@@ -23,23 +23,24 @@
     <link href="assets/stylesheets/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
 
 
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets/stylesheets/demo.css" rel="stylesheet" />
-
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/stylesheets/pe-icon-7-stroke.css" rel="stylesheet" />
-
+   <!-- 
+<link href="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+-->
 </head>
 <body>
+
    <%= render 'layouts/header' %>
 
 
 
-        <div class="content">
-            <div class="container-fluid">
+        <div class="content purple-button" >
+            <div class="container-fluid "  >
                 <div class="row">
  <!--PARENT WINDOW ----------------------------------------------------------------------->
 
@@ -159,7 +160,8 @@
 						  							  	<label for="checkbox1"></label>
 					  						  		</div>
                                                 </td>
-                                                <td>Storm Emma: Department of Education 'monitoring' situation as Ireland braces for 'exceptional weather event'</td>
+                                                <td><%= link_to "Storm Emma: Department of Education 'monitoring' situation as Ireland braces for 'exceptional weather event", "https://www.independent.ie/irish-news/storm-emma/storm-emma-department-of-education-monitoring-situation-as-ireland-braces-for-exceptional-weather-event-36648134.html",  :class => "a", :target => "_blank"%></td>
+                                                
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
                                                         <i class="fa fa-edit"></i>
@@ -176,7 +178,8 @@
 						  							  	<label for="checkbox2"></label>
 					  						  		</div>
                                                 </td>
-                                                <td>Leaving Certificate Agricultural Science Higher Level: 'Well balanced and manageable'</td>
+                                                <td><%= link_to "Leaving Certificate Agricultural Science Higher Level: 'Well balanced and manageable","https://www.independent.ie/irish-news/education/exams/leaving-certificate-agricultural-science-higher-level-well-balanced-and-manageable-30368739.html",  :class => "a", :target => "_blank"%></td>
+                                                
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
                                                         <i class="fa fa-edit"></i>
@@ -193,7 +196,8 @@
 						  							  	<label for="checkbox3"></label>
 					  						  		</div>
                                                 </td>
-                                                <td> Girls make grade again in Junior Cert results
+                                                <td> 
+                                                <%= link_to "Girls make grade again in Junior Cert results","https://www.irishtimes.com/news/education/girls-earn-better-results-than-boys-in-junior-cert-1.2792898",  :class => "a", :target => "_blank"%></td>
 												</td>
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
@@ -211,7 +215,10 @@
 						  							  	<label for="checkbox4"></label>
 					  						  		</div>
                                                 </td>
-                                                <td>Youngsters face breath tests as the post-exam parties begin</td>
+                                                <td>
+        <%= link_to "New Junior Cert English results show more pupils with good grades","https://www.independent.ie/irish-news/education/exams/new-junior-cert-english-results-show-more-pupils-with-good-grades-36127190.html",  :class => "a", :target => "_blank"%></td>
+												
+                                                </td>
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
                                                         <i class="fa fa-edit"></i>
@@ -229,7 +236,9 @@
 					  						  		</div>
                                                 </td>
                                               
-                                                <td>College place offers being snapped up by students</td>
+                                                <td>
+   <%= link_to "College place offers being snapped up by students","https://www.independent.ie/irish-news/education/exams/college-place-offers-being-snapped-up-by-students-36056013.html",  :class => "a", :target => "_blank"%></td>
+		</td>
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
                                                         <i class="fa fa-edit"></i>
@@ -246,7 +255,10 @@
 						  							  	<label for="checkbox6"></label>
 					  						  		</div>
                                                 </td>
-                                                <td>Answers to the most common questions on the CAO system</td>
+                                                <td>
+     <%= link_to "Answers to the most common questions on the CAO system","https://www.independent.ie/irish-news/education/exams/answers-to-the-most-common-questions-on-the-cao-system-36056003.html",  :class => "a", :target => "_blank"%></td>
+	
+                                                </td>
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
                                                         <i class="fa fa-edit"></i>
@@ -278,56 +290,15 @@
 
 
 
-<!--Debugging-->
-<%
-=begin 
-<%="Welcome to eJournal" %>
-<br />
- <%= " ADD DIFFERENT PERMISSIONS FOR EACH USER. " %>
- <br />
-<%# use render this is acopy paste%>
-<%= "The current date and time is:  #{@time}" %>
-<br/>
-<%= "The User is:  #{@user}" %>
-<br/>
-   <%= render 'layouts/header' %> 
- <br />
 
-<br />
-<br>
-
-
-<br />
-<br>
-<%= link_to("I am a parent Link to users parent", {:controller => 'users', :action => 'parent'}) %>
-<br>
-<br />
-<%= link_to("I am a principal/administrator", {:controller => 'users', :action => 'principal'}) %>
-<br>
-<br />
-
-<%= link_to("I am a teacher link to users teacher" , teacher_path )%>
-<br>
-<br />
-<%= link_to("I am a student", {:controller => 'users', :action => 'student'}) %>
-<br>
-<br />
- <%= link_to("SEE Your Student DELETE ON COMPLITION", {:controller => 'students', :action => 'index'}) %>
-<br>
-<br/>
- <%= link_to 'New Result', new_result_path %>
-<%= yield %>
--->
-<% 
-=end %>
 
 <%= render 'layouts/footer' %>
 
 
     </div>
 </div>
-
-
+   <!-- 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 </body>
 
     <!--   Core JS Files   -->

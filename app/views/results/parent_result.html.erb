@@ -9,8 +9,9 @@
 <!-- 
 <p id="notice"><%# notice %></p>
 
-!!!!!!!!!!!!!!!RUN THIS ONLY IF TESULTS ARE NOT EMPTY ALL VIEWS MUST HAVE WHERE THEY REQUEST/GET FROM DB IN CONTROLLER @var.each index GET not posts-->
-<!-- Dublicate helpfull graphs 1 to show the lates results and the other the average make +1 to sho trends in time-->
+!!!!!!!!!!!!!!!RUN THIS ONLY IF RESULTS ARE NOT EMPTY ALL VIEWS MUST HAVE WHERE THEY REQUEST/GET FROM DB IN CONTROLLER @var.each index GET not posts-->
+
+
 
 
 <div class="row">
@@ -190,9 +191,112 @@
 </div>
 </div>
 
+<!----------  Sentiment Google Cloud BEGIN----------------------------------------------------------------------------------------------------------------------------------------->
+<!-- experiment------------------------------------------------------------------------------------------------------------------------------------------------->
+ <%# table of all the results for a particular student%>
+   <%text_content = " "%>
+<% if @results.length == 0 %>
+                        <div class="col-md-12">
+                        <div class="card card-plain">
+                            <div class="header">
+                                <h3 class="title">No behaviour results</h3>
+                               
+                                
+                            </div>
+                            </div>
+                            </div>
+<% else %>
+
+
+    </tr>
+  </thead>
+
+  <tbody>
+      <!-- make a note that the teacher will only add a comment on bhaviour and not marks, marks are expressed in marks -->
+    <% @results.each do |result| %>
+    <%#saving all the content in one fil so reduece api calls = cheap. maybe add a button so to reduce even more on request call the API%>
+        <%text_content = text_content+". "+result.comment%> 
+        
+         
+          
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>
+<%#for debuggin =  printing the whole string to request after adding all the strings of one student together%>
+  <p><%# "Text Content   #{text_content}" %></p>
+
+
+
+  <%#
+  #enable when finished
+  #for debugging purposes
+  #text_content = "very good student improved a lot since the beginning of the year Arthur began to misbehave in class still constantly disrupting the class"
+  #reduce the code some of it here is not necessary I am just returning a number
+  require "google/cloud/language"
+ENV["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/ubuntu/workspace/workspace1/key.json"
+  language = Google::Cloud::Language.new
+
+  response = language.analyze_sentiment content: text_content, type: :PLAIN_TEXT
+
+  sentiment = response.document_sentiment
+  
+  @sentiment_score=sentiment.score  #"Overall document sentiment: (#{sentiment.score})"
+  # [END migration_sentiment]
+
+  puts "Overall document sentiment: (#{sentiment.score})"
+  puts "Sentence level sentiment:"
+
+  sentences = response.sentences
+
+  sentences.each do |sentence|
+    sentiment = sentence.sentiment
+    puts "#{sentence.text.content}: (#{sentiment.score})"
+  end
+  # [END sentiment_from_text]
+  #end
+
+
+
+if __FILE__ == $PROGRAM_NAME
+
+  if ARGV.length == 1
+    puts "Sentiment:"
+    sentiment_from_text text_content: ARGV.first
+    puts "Entities:"
+    entities_from_text text_content: ARGV.first
+    puts "Syntax:"
+    syntax_from_text text_content: ARGV.first
+    puts "Classify:"
+    classify_text text_content: ARGV.first
+  else
+    puts "Usage: ruby language_samples.rb <text-to-analyze>"
+  end
+
+
 
   
-<!--   <p><%#"_____________Begaviour:   #{@behaviour}" %></p> experiment------------------------------------------------------------------------------------------------------------------------------------------------->
+
+ end 
+ 
+ %>
+
+<%#dispaly this as well %>
+   <p><%= "Sentiment results:   #{@sentiment_score}" %></p>
+   
+   
+<div class="row">
+  <div class="col-xs-6">
+      <br><br><br><br><br></br>
+    <h3>Google Natural Language Sentiment Analysis of all text comments</h3>
+     <p>1 = Maximum Good, 0 = Neuteral and -1 is Maximum Bad</p>
+        <%= column_chart [["Sentiment Scores", @sentiment_score]],min: -1, max: 1%>
+  </div>
+<!----------  Sentiment Google Cloud End----------------------------------------------------------------------------------------------------------------------------------------->
+  
+
+  
 <!-------------------------------------------------------------------------------  Filters TABLE BEGIN------------------>      
  
 <br><br><br>

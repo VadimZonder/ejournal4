@@ -1,5 +1,6 @@
 /*
-    
+  *This is an opensource javascript bootstrab library with some third party modification.
+ *This code is taken from: https://www.creative-tim.com/product/light-bootstrap-dashboard#_=_   
     
 
      Creative Tim Modifications

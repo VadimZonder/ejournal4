@@ -7,12 +7,10 @@
                         <div class="card card-plain">
                             <div class="header">
                                 <h4 class="title">Add A New Filter</h4>
-                                <p class="category">Teachers Only</p>
+                                <p class="category">Enter School/Surname/Email</p>
                                 </div>
                             <div class="content table-responsive table-full-width">
-                                <table class="table table-hover">
-                                  
-                              <tbody>     
+                                   
                                     <%= form_for(@pfilter) do |f| %>
   <% if @pfilter.errors.any? %>
     <div id="error_explanation">
@@ -29,7 +27,7 @@
 
     <div class="field">
      <tr>
-<th> <div class="field"><%= f.label :pfilter %><br><p><%= f.text_field :pfilter %><br> </div><%= f.label :email %><br><p><%= f.text_field :email %><br> <div class="actions"> <%= f.submit %></div> </p></th>
+<th> <div class="field"><%= f.label :pfilter,'Searched Term' %><br><p><%= f.text_field  :pfilter %><br> </div><%= f.label :email %><br><p><%= f.text_field :email, required: true, value:current_user.email, :readonly => true  %><br> <div class="actions"> <%= f.submit 'Create', class: "btn purple-button"  %></div> </p></th>
 </tr> 
   </div>   
  
@@ -41,8 +39,6 @@
 </tr> 
   </div> 
 
-</tbody> 
-                                </table>
 
                             </div>
                         </div>

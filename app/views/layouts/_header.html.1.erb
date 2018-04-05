@@ -9,7 +9,7 @@
 
     -->
 
-    	<div class="sidebar-wrapper" >
+    	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="https://www.linkedin.com/in/vadim-malakhovski/" class="simple-text">
                     EJournal
@@ -72,8 +72,8 @@
     	</div>
     </div>
 
-    <div class="main-panel ">
-        <nav class="navbar navbar-default navbar-fixed ">
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
@@ -86,8 +86,8 @@
 <!-------------------------------------------------------------------------------  headers-->
                     <!--going back-->
                     <a class="navbar-brand" href="../">
-                      <%="Home" %>
-                    <% link_to "Home", root_path%>
+                      <%= "Home"%>
+                    <% link_to "Home", root_path  %>
                     </a>
  <!-------------------------------------------------------------------------------  END  headers-->                
                  
@@ -125,19 +125,15 @@
                             </a>
                         </li>
                     </ul>
-                
-                   <ul class="nav navbar-nav navbar-right">
-                     <% if current_user %>  
+                    <ul class="nav navbar-nav navbar-right">
+                     
                      <!--USER name + surename ----------------------------------------------------------------------------------------->
                      <!--add if loged in user if not loged in login/signup-->
                      <li>
-                     
-                     <%#displaying current user and once clicked redirecting to editing that user%>
-                         <%= link_to "Welcome:   #{@user}", "https://ejournal-reloaded-vadimmalakhovski.c9users.io/users/#{current_user.id}/edit" %>  <!--fix, this will be displayed on most of the pages so need in controllers , edit_user_path(@user) -->
-               
-                    
+                     <a href="">
+                      <p><%= "Welcome:   #{@user}" %></p>
+                      </a>
                       </li>
-               
                       <!--USER name + surename END----------------------------------------------------------------------------------------->
                       
                        <!-- delete on completion
@@ -167,8 +163,7 @@
                         <li>
                         -->
                          
-                          
-                     
+                               <% if current_user %>
                        
                          <li>  
                             <a href="logout">
@@ -181,34 +176,83 @@
          
                <li>  
                  <li> 
-                     <a href="signup"> 
+                     <a  class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <!--href="signup"-->
                  
                       <%="Register"%>
-                      <% link_to 'Register', signup_path %>
+                      <%# link_to 'Register', signup_path %>
                       </a>
+                      
+
+
+                      <%# render 'form' %>
+
+<%# link_to 'Back', users_path %>
                       </li> 
                       
+
+      
+         
                       <li> 
                       <a>or</a>
                       </li> 
                         
                           <li> 
-                    <a href="login">  
-                    
-                     <%="Login"%>
-                     <%link_to 'Login', login_path %>
+                    <a href="login"> 
+                  
+                     <%="Sign In"%>
+                     <%link_to 'Sign in', login_path %>
                      </a>
+
                       </li>   
                    </li>  
               
-           
-         
-                 
-          <% end %>
+
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+   <%= form_for User.new do |f| %>
+  <% if User.new.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+   </div>
+</div>
 
 
-
-                               <!-- <p>Log out</p>             </li>-->
+             <% end %>                   <!-- <p>Log out</p>             </li>-->
                            
                       
 						<li class="separator hidden-lg"></li>
@@ -216,22 +260,6 @@
                 </div>
             </div>
         </nav>
-
-  
-<!--
-<p>
-  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Link with href
-  </a>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Button with data-target
-  </button>
-</p>
-<div class="collapse" id="collapseExample">
-  <div class="card card-body">
-    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-  </div>
-</div>
 <!-- add _name.html.erb and then can render in another vews html.erb file + can be rendered on multiple pages to maintain DRY principle
 <div id='header'>
 </div>
