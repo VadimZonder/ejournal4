@@ -20,6 +20,9 @@ class StudentsController < ApplicationController
   
 
 def search
+      #need to get the currnet user in order to display in the header
+    @user = current_user
+    
   @search_term = params[:q]
  #@the search term is what will be presented in q
   st ="%#{params[:q]}%"
@@ -79,9 +82,10 @@ end
     
     ##Here we personalise filters so that each user will have their own unique filte
     #displaying currnet user
-    @user = current_user.email
+    @user_email = current_user.email
+    @user = current_user
     #display the pfilters with the current user
-    @pfilters= Pfilter.where("email like ? ", @user) 
+    @pfilters= Pfilter.where("email like ? ", @user_email) 
     
     #name = "Vadim"
     #@students= Student.where("name like ? ", name)
@@ -92,17 +96,35 @@ end
   # GET /students/1
   # GET /students/1.json
   def show
-    #getting an id of a student
+    #need to get the currnet user in order to display in the header
+    @user = current_user
+      
+    #getting a firstname and surname to prefill in the _form
+    @user_first_name= current_user.first_name
+    @user_last_name= current_user.last_name
       
   end
 
   # GET /students/new
   def new
+    #need to get the currnet user in order to display in the header
+    @user = current_user
+      
+    #getting a firstname and surname to prefill in the _form
+    @user_first_name= current_user.first_name
+    @user_last_name= current_user.last_name
+    
     @student = Student.new
   end
 
   # GET /students/1/edit
   def edit
+    #need to get the currnet user in order to display in the header
+    @user = current_user
+      
+    #getting a firstname and surname to prefill in the _form
+    @user_first_name= current_user.first_name
+    @user_last_name= current_user.last_name
   end
 
   # POST /students
@@ -112,7 +134,7 @@ end
 
     respond_to do |format|
       if @student.save
-        format.html { redirect_to @student, notice: 'Student was successfully created.' }
+        format.html { redirect_to students_url, notice: 'Student was successfully created.' }
         format.json { render :show, status: :created, location: @student }
       else
         format.html { render :new }
@@ -126,7 +148,7 @@ end
   def update
     respond_to do |format|
       if @student.update(student_params)
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+        format.html { redirect_to students_url, notice: 'Student was successfully updated.' }
         format.json { render :show, status: :ok, location: @student }
       else
         format.html { render :edit }
@@ -138,6 +160,7 @@ end
   # DELETE /students/1
   # DELETE /students/1.json
   def destroy
+    #@student= Student.find(params[:id])
     @student.destroy
     respond_to do |format|
       format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }

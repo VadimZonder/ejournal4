@@ -35,6 +35,7 @@
 <body>
 
  <%= render 'layouts/header' %>
+ <p id="notice"><%= notice %></p>
 <!-------------------------------------------------------------------------------  Filters TABLE BEGIN------------------>   
 <tbody class="table-hover">
 <tr>
@@ -83,7 +84,7 @@
                                       
                                          <% @pfilters.each do |pfilter| %>
                                           <tr>
-                                            <td><a href="/pfilter/<%= pfilter.pfilter %>"><%= pfilter.pfilter %></a></td>
+                                            <td><%= pfilter.pfilter %></td>
                                             <!--<td><%# pfilter.email %></td>-->
                                             <td><% if user_signed_in? %>
                                                     <%#link_to 'Show', pfilter %> 
@@ -122,12 +123,12 @@
                                 <table class="table table-hover">
                                     <thead>
                                             <th class="text-left">Name</th>
-                                        <th class="text-left">Date of Birth</th>
-                                        <th class="text-left">School</th>
-                                        <th class="text-left">Email</th>
-                                        <th class="text-left">Results</th>
-                                        <th class="text-left">Comment</th>
-                                        <th class="text-left">Edit/Delete</th>
+                                        <th class="text-center">Date of Birth</th>
+                                        <th class="text-center">School</th>
+                                        <th class="text-center">Email</th>
+                                        <th class="text-center">Results</th>
+                                        <th class="text-center">Comment</th>
+                                        <th class="text-center">Edit/Delete</th>
                                     </thead>
                         
 
@@ -156,15 +157,21 @@
                                          <% @students.each do |student| %>
 <% if pfilter.pfilter.casecmp(student.surname) == 0 || pfilter.pfilter.casecmp(student.email) == 0 ||  pfilter.pfilter.casecmp(student.school) == 0%>
                                           <tr>
-<td ><%= link_to "#{student.name} ", student %><%= student.surname  %></td>
-<td ><%= "#{student.day_of_birth} /" %>  
+<td class="text-left"><%= link_to "#{student.name} ", student %><%= student.surname  %></td>
+<td class="text-center"><%= "#{student.day_of_birth} /" %>  
             <%= "#{student.month_of_birth} /"%>
             <%= student.year_of_birth %></td>
-<td > <%= student.school %></td>
-<td > <%= student.email %></td>
-<td><%= link_to("Results", {:controller => 'results', :action => 'teacher_result', :id =>  student.email}) %>
+<td class="text-center"> <%= student.school %></td>
+<td class="text-center"> <%= student.email %></td>
+<td class="text-center"><%= link_to("Results", {:controller => 'results', :action => 'teacher_result', :id =>  student.email}) %>
 </td>
-<td > <%= student.comment %></td>
+<td class="text-center"> <%= student.comment %></td>
+<!--make the whole page not work if not signed in and delte this sing in-->
+<td  class="text-center"><% if user_signed_in? %>
+              <%= link_to 'Edit', edit_student_path(student) %>/
+              <%= link_to 'Delete', student, method: :delete, data: { confirm: 'Are you sure?' } %>
+               <%else%>
+                 <% end %>                                </td>
 
  <% end %>
 
@@ -197,7 +204,7 @@
         </div>
 
 
-
+    
 
  <%= render 'layouts/footer' %>
 

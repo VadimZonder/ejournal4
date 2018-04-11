@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
+  resources :results
+  resources :teacher_results
+  
  get '/users/:id/edit' => 'users#edit' 
+ 
+ #path to editing a result
+ get '/results/:id/edit' => 'results#edit' 
  
 
 #form on the home page for device
@@ -7,7 +13,6 @@ Rails.application.routes.draw do
 #get ':controller(/:action(/:id(.:format)))'
 
 
-  resources :results
   resources :static_pages
   get "table.html", to: "static_pages#table"
   get "dashboard.html", to: "static_pages#dashboard"
@@ -28,6 +33,7 @@ end
   resources :pfilters
 post '/results' => 'result#parent_result'
 resources :parent_results
+
 
 post '/search' => 'students#search'
 #if going to /parent_search then controller action parents method parent_search

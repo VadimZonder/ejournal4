@@ -15,7 +15,7 @@
                             <div class="header">
                                 <h4 class="title">Student Information Table</h4>
                                 <p class="category">View and Edit Student's Profile here</p> <br>
-                                <p><%= link_to("SEE Your Student's Results", {:controller => 'results', :action => 'index', :id =>  @student.email}) %></p>
+                                <p><%= link_to("SEE Student's Results", {:controller => 'results', :action => 'teacher_result', :id =>  @student.email}, class: "btn purple-button") %></p>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">

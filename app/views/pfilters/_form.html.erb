@@ -4,12 +4,12 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="card card-plain">
                             <div class="header">
-                                <h4 class="title">Add A New Filter</h4>
+                                <h4 class="title">Create/Edit A Filter</h4>
                                 <p class="category">Enter School/Surname/Email</p>
                                 </div>
-                            <div class="content table-responsive table-full-width">
+                                <br>
+
                                    
                                     <%= form_for(@pfilter) do |f| %>
   <% if @pfilter.errors.any? %>
@@ -27,7 +27,13 @@
 
     <div class="field">
      <tr>
-<th> <div class="field"><%= f.label :pfilter,'Searched Term' %><br><p><%= f.text_field  :pfilter %><br> </div><%= f.label :email %><br><p><%= f.text_field :email, required: true, value:current_user.email, :readonly => true  %><br> <div class="actions"> <%= f.submit 'Create', class: "btn purple-button"  %></div> </p></th>
+<th> <div class="field"><%= f.label :pfilter,'Searched Term' %>
+<br>
+<p><%= f.text_field  :pfilter, required: true %>
+<br> </div>
+<%= f.label :email %><br><p><%= f.text_field :email, required: true, value:current_user.email, :readonly => true  %>
+<br> 
+<div class="actions"> <%= f.submit 'Create', class: "btn purple-button"  %></div> </p></th>
 </tr> 
   </div>   
  
@@ -35,7 +41,7 @@
 <% end %>
      <div class="field">
      <tr>
-<th> <p><%= link_to 'Back', pfilters_path %></p></p></th>
+<th> <p><%= link_to 'Back', students_path %></p></th>
 </tr> 
   </div> 
 
@@ -45,6 +51,5 @@
                     </div>
                     
                                  </div>
-                        </div>
-                    </div>
+         
  <%= render 'layouts/footer' %>

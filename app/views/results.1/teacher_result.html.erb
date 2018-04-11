@@ -12,7 +12,17 @@
 !!!!!!!!!!!!!!!RUN THIS ONLY IF TESULTS ARE NOT EMPTY ALL VIEWS MUST HAVE WHERE THEY REQUEST/GET FROM DB IN CONTROLLER @var.each index GET not posts-->
 <!-- Dublicate helpfull graphs 1 to show the lates results and the other the average make +1 to sho trends in time-->
  <%# table of all the results for a particular student%>
-
+<% if @results.length == 0 %>
+                        <div class="col-md-12">
+                        <div class="card card-plain">
+                            <div class="header">
+                                <h3 class="title">There are no results yet added for this student</h3>
+                                <h4><%= link_to 'Add A New Result', new_result_path %></h4>
+                                
+                            </div>
+                            </div>
+                            </div>
+<% else %>
 <%# make divs stack upon one another%>
 <div class="content">
             <div class="container-fluid">

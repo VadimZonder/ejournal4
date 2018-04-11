@@ -6,7 +6,6 @@ class CreateResults < ActiveRecord::Migration
       t.string :teacher
       t.integer :grade
       t.string :email
-      t.string :parent_email
       t.integer :behaviour
       t.string :comment
 
