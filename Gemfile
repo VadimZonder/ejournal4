@@ -50,7 +50,7 @@ gem 'pg', group: :production
 gem 'rails_12factor', group: :production
 
 
-gem 'web-console', group: :development
+gem 'web-console', '~> 2.0'
 
 #gem 'google-cloud-language'
 source "https://rubygems.org"
