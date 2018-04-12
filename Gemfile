@@ -50,7 +50,7 @@ gem 'pg', group: :production
 #12 factor for Heroku
 gem 'rails_12factor', group: :production
 
-#insted of webrick server
+#insted of webrick 
 gem 'puma'
 
 gem 'web-console', '~> 2.0'
