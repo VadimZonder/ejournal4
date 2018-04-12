@@ -41,7 +41,7 @@ gem 'active_median', '~> 0.1.0'
 #________________________________
 # Use sqlite3 as the database for Active Record
 #used for development and testing
-gem 'sqlite3', group: [:development, :test]
+gem 'sqlite3', '~> 1.3.13', group: [:development, :test]
 	
 #postgres for production db
 gem 'pg', group: :production
@@ -50,7 +50,7 @@ gem 'pg', group: :production
 gem 'rails_12factor', group: :production
 
 
-
+gem 'web-console', '~> 2.0'
 
 #gem 'google-cloud-language'
 source "https://rubygems.org"
