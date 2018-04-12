@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+#gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -39,6 +39,18 @@ gem 'highcharts-rails'
 gem 'groupdate', '~> 3.2.0'
 gem 'active_median', '~> 0.1.0'
 #________________________________
+# Use sqlite3 as the database for Active Record
+#used for development and testing
+gem 'sqlite3', group: [:development, :test]
+	
+#postgres for production db
+gem 'pg', group: :production
+	
+#12 factor for Heroku
+gem 'rails_12factor', group: :production
+
+
+
 
 #gem 'google-cloud-language'
 source "https://rubygems.org"

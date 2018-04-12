@@ -1,7 +1,11 @@
 class ResultsController < ApplicationController
  #granting and limmiting access for different methods  
  before_action :set_result, only: [:show, :edit, :update, :destroy], except: [:parent_result, :update, :edit, :destroy]
-
+  
+   #extra security the password for teacher will have a password + the date = each day different
+   @date = Time.now.strftime("%e")
+   ###uncomment at the end
+  #http_basic_authenticate_with :name => "@user", :password => @date + "123456", except: :parent_result
 
 #display results from newest to oldest = .order("created_at DESC").all
 #cannot add new result, maybe because all results of filters ar eon 1 page .order("created_at DESC").all
@@ -58,6 +62,7 @@ def parent_result
 end
 
 def teacher_result
+
   
     #this code is to get back to an appriopriate place
     #geting the URI of the current page
