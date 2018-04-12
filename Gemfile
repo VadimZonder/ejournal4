@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.3.4'
 #gem 'ruby', '2.3.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
