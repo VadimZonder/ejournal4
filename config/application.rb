@@ -25,5 +25,7 @@ module Workspace
     
     config.web_console.whitelisted_ips = '109.78.185.139'
     config.web_console.whiny_requests = false
+    config.web_console.development_only = false
+
   end
 end
