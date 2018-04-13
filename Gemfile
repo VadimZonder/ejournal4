@@ -42,10 +42,10 @@ gem 'active_median', '~> 0.1.0'
 #________________________________
 # Use sqlite3 as the database for Active Record
 #used for development and testing
-gem 'sqlite3', '~> 1.3.13', group: [:development, :test]
+#gem 'sqlite3', '~> 1.3.13', group: [:development, :test]
 	
 #postgres for production db
-gem 'pg', group: :production
+gem 'pg', '0.20.0'
 	
 #12 factor for Heroku
 gem 'rails_12factor', group: :production
@@ -66,10 +66,10 @@ group :test do
 end
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+#gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+ #gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
